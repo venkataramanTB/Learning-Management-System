@@ -1,0 +1,25 @@
+.home {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #000000;
+    animation: fadeIn 1s ease-in;
+}
+
+.title {
+    font-size: 2.5rem;
+    color: #ffffff;
+    text-shadow: 2px 2px 4px rgba(144, 139, 139, 0.5);
+}
+
+.description {
+    font-size: 1.2rem;
+    color: #ffffff;
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}

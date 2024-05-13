@@ -1,10 +1,11 @@
-import React from "react";
+import React from 'react';
+import './Home.css';
 
 const Home = () => {
     return (
-        <div>
-            <h1>Welcome to the Learning Management System</h1>
-            <p>This is the home page of our LMS.</p>
+        <div className="home">
+            <h1 className="title">Welcome to the Learning Management System</h1>
+            <p className="description">This is the home page of our LMS.</p>
         </div>
     );
 }
