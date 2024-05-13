@@ -6,24 +6,33 @@
     height: 100vh;
     background-color: #000000;
     animation: fadeIn 1s ease-in;
+    font-family: 'Arial', sans-serif;
 }
 
 .title {
-    font-size: 2.5rem;
+    font-size: 3rem;
     color: #ffffff;
     text-shadow: 2px 2px 4px rgba(144, 139, 139, 0.5);
+    margin-bottom: 20px;
 }
 
 .description {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     color: #ffffff;
+    text-align: center;
+    max-width: 800px;
+    margin-bottom: 40px;
 }
+
 .navbar {
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
     background-color: #333;
+    position: fixed;
+    top: 0;
+    width: 100%;
 }
 
 .navbar li {
@@ -52,6 +61,8 @@
     text-decoration: none;
     text-align: center;
     cursor: pointer;
+    font-size: 1.2rem;
+    transition: background-color 0.3s ease;
 }
 
 .login-button:hover {
