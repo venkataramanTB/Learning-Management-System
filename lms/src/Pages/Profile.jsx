@@ -18,7 +18,10 @@ const Profile = () => {
                         <p><strong>Course:</strong> {user.course}</p>
                     </React.Fragment>
                 ) : (
+                    <React.Fragment>
                     <p>User details not found</p>
+                    <Link to="/login">Not yet Logged in</Link>
+                    </React.Fragment>
                 )}
                 <Link to="/dashboard">Go to Dashboard</Link>
             </div>

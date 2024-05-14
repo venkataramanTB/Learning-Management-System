@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Card, TextField, Button, Typography, makeStyles, CssBaseline, ThemeProvider } from "@material-ui/core";
-import { createMuiTheme } from '@material-ui/core/styles';
+import { createTheme } from '@material-ui/core/styles';
 
-const theme = createMuiTheme({
+const theme = createTheme({
   overrides: {
     MuiCssBaseline: {
       '@global': {
