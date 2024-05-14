@@ -1,25 +1,34 @@
 import React, { useState } from "react";
-import { Card, TextField, Button, makeStyles } from "@material-ui/core";
+import { Card, TextField, Button, Typography, makeStyles } from "@material-ui/core";
 
 const useStyles = makeStyles({
+    body: {
+        background: 'black'
+    },
     card: {
-        width: '300px',
-        padding: '20px',
+        width: '800px',
+        padding: '50px',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
         margin: 'auto',
-        marginTop: '100px',
+        marginTop: '150px',
         boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.1)',
+        background:'',
     },
     input: {
         marginBottom: '20px',
         width: '100%',
+
     },
     button: {
         width: '100%',
+        marginBottom: '20px',
     },
+    h1:{
+        textAlign: 'left',
+    }    
 });
 
 function Login() {
@@ -37,11 +46,17 @@ function Login() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        console.log(`Username: ${username}, Password: ${password}`);
+        if (username === "venky" && password === "1234") {
+            console.log(`Welcome ${username}`);
+            window.location.href='/';
+        } else {
+            alert('Invalid Username or Password');
+        }
     }
 
     return (
         <Card className={classes.card}>
+            <Typography variant="h4" align="center" className={classes.title}>Login</Typography>
             <form onSubmit={handleSubmit}>
                 <TextField 
                     label="Username" 
@@ -63,7 +78,7 @@ function Login() {
                 </Button>
             </form>
         </Card>
-    )
+    );
 }
 
 export default Login;
