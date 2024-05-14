@@ -37,14 +37,13 @@ body {
     overflow: hidden;
     background-color: #1c1b1b;
     position: fixed;
-    left: 0; /* Adjusted to left */
+    left: 0; 
     top: 0;
-    height: 100vh; /* Height to cover the entire viewport */
+    height: 100vh; 
 }
 
 .navbar li {
-    /* float: left; Remove this line */
-    width: 100%; /* Make each list item take full width */
+    width: 100%; 
 }
 
 .navbar li a {
