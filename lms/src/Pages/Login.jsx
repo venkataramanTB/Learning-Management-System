@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Card, TextField, Button, Typography, makeStyles, CssBaseline, ThemeProvider } from "@material-ui/core";
 import { createTheme } from '@material-ui/core/styles';
+import { Link } from "react-router-dom";
 
 const theme = createTheme({
   overrides: {
@@ -73,7 +74,22 @@ function Login() {
             setLoggedInUser(user);
             console.log(`Welcome ${username}`);
             window.location.href='/';
-        } else {
+        } else if (username === "sara" && password === "1234") {
+            // Store user data in sessionStorage
+            const user = { username };
+            sessionStorage.setItem('loggedInUser', JSON.stringify(user));
+            setLoggedInUser(user);
+            console.log(`Welcome ${username}`);
+            window.location.href='/';
+        } else if (username === "yash" && password === "1234") {
+            // Store user data in sessionStorage
+            const user = { username };
+            sessionStorage.setItem('loggedInUser', JSON.stringify(user));
+            setLoggedInUser(user);
+            console.log(`Welcome ${username}`);
+            window.location.href='/';
+        }
+        else {
             alert('Invalid Username or Password');
         }
     }

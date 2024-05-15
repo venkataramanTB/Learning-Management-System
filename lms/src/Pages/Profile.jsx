@@ -24,6 +24,7 @@ const Profile = () => {
                     </React.Fragment>
                 )}
                 <Link to="/dashboard">Go to Dashboard</Link>
+                <Link to="/logout">Logout</Link>
             </div>
         </div>
     );

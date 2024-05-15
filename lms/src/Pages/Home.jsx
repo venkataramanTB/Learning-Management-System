@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Logout from './Logout'; // import the Logout component
 import './Home.css';
 
 const Home = () => {
@@ -12,6 +13,7 @@ const Home = () => {
                     <li><Link to="/"><i className="fas fa-home"></i>   Home</Link></li>
                     <li><Link to="/about"><i className="fas fa-info-circle"></i>   About</Link></li>
                     {!userData && <li><Link to="/login"><i className="fas fa-sign-in-alt"></i>   Login</Link></li>}
+                    {userData && <li><Link to="/logout"><i className="fas fa-sign-in-alt"></i>   Logout</Link></li>}
                     <li><Link to="/profile"><i className="fas fa-user"></i>   Profile</Link></li>
                 </ul>
             </nav>

@@ -1,0 +1,32 @@
+.logout {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 2em;
+}
+
+.logout h1 {
+    font-size: 2em;
+    color: #333;
+}
+
+.logout p {
+    font-size: 1.2em;
+    color: #666;
+    margin-bottom: 1em;
+}
+
+.logout button {
+    padding: 0.5em 1em;
+    font-size: 1em;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.logout button:hover {
+    background-color: #0056b3;
+}

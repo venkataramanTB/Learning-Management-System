@@ -3,24 +3,24 @@ import { makeStyles } from '@material-ui/core/styles';
 import { AppBar, Toolbar, Typography, Button, IconButton, Grid, Paper, Card, CardContent } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-  },
-  menuButton: {
-    marginRight: theme.spacing(2),
-  },
-  title: {
-    flexGrow: 1,
-  },
-  paper: {
-    padding: theme.spacing(2),
-    textAlign: 'center',
-    color: theme.palette.text.secondary,
-  },
-}));
 
 export default function Dashboard() {
+    const useStyles = makeStyles((theme) => ({
+      root: {
+        flexGrow: 1,
+      },
+      menuButton: {
+        marginRight: theme.spacing(2),
+      },
+      title: {
+        flexGrow: 1,
+      },
+      paper: {
+        padding: theme.spacing(2),
+        textAlign: 'center',
+        color: theme.palette.text.secondary,
+      },
+    }));
   const classes = useStyles();
 
   return (
