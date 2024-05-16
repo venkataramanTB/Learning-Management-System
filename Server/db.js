@@ -2,7 +2,6 @@ const mysql = require('mysql2/promise');
 const fs = require('fs');
 const dotenv = require('dotenv');
 dotenv.config();
-// Database configuration
 const dbConfig = {
   host: process.env.DB_HOST,
   user: process.env.DB_USER,
@@ -10,10 +9,8 @@ const dbConfig = {
   database: process.env.DB_DATABASE,
   port: 3306,
   ssl: { ca: fs.readFileSync('./DigiCertGlobalRootCA.crt.pem') },
-  connectionLimit: 10, // Adjust the connection limit as needed
+  connectionLimit: 10,
 };
-
-// Create a connection pool
 const pool = mysql.createPool(dbConfig);
 
 const executeQuery = async(query) => {
@@ -25,15 +22,12 @@ const executeQuery = async(query) => {
     console.log("Connection Successful....!");
     return rows;
   } catch (error) {
-    // Handle the error or log it
     console.error('Error executing query:', error.message);
-    throw error; // Re-throw the error to be handled by the calling code
+    throw error; 
   } finally {
     if (connection) {
-      connection.release(); // Always release the connection, even if an error occurred
+      connection.release(); 
     }
   }
 }
-
-// Export the executeQuery function for use in other modules
 module.exports = { executeQuery };
