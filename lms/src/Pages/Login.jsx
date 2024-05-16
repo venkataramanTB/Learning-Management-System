@@ -1,8 +1,6 @@
 import React, { useState } from "react";
-import { Card, TextField, Button, Typography, makeStyles, Link, CssBaseline } from "@material-ui/core"; // Import CssBaseline
-import { createTheme, ThemeProvider } from '@material-ui/core/styles';
-import { Link as RouterLink } from "react-router-dom"; // Import RouterLink from react-router-dom
-
+import { Card, TextField, Button, Typography, makeStyles, CssBaseline, ThemeProvider } from "@material-ui/core";
+import { createTheme } from '@material-ui/core/styles';
 
 const theme = createTheme({
   overrides: {
@@ -105,10 +103,6 @@ function Login() {
                             Submit
                         </Button>
                     </form>
-                    <Typography variant="body1" align="center">
-                        Don't have an account?{" "}
-                        <Link component={RouterLink} to="/signup">Sign up</Link> {/* Link to the sign-up page */}
-                    </Typography>
                 </Card>
             </div>
         </ThemeProvider>
