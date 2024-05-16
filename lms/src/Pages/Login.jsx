@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Card, TextField, Button, makeStyles,Typography } from "@material-ui/core";
-import { blue } from "@material-ui/core/colors";
 import { Link } from "react-router-dom";
 const useStyles = makeStyles({
     card: {
@@ -51,6 +50,7 @@ function Login() {
     const classes = useStyles();
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const [loggedInUser, setLoggedInUser] = useState(null);
 
     const handleUsernameChange = (event) => {
         setUsername(event.target.value);
@@ -60,9 +60,18 @@ function Login() {
         setPassword(event.target.value);
     }
 
-    const handleSubmit = (event) => {
+    const handleLogin = (event) => {
         event.preventDefault();
-        console.log(`Username: ${username}, Password: ${password}`);
+        if (username === "venky" && password === "1234") {
+            // Store user data in sessionStorage
+            const user = { username };
+            sessionStorage.setItem('loggedInUser', JSON.stringify(user));
+            setLoggedInUser(user);
+            console.log(`Welcome ${username}`);
+            window.location.href='/';
+        } else {
+            alert('Invalid Username or Password');
+        }
     }
 
     return (
@@ -70,7 +79,7 @@ function Login() {
         <Card className={classes.card}>
             <h1 className={classes.title}>---- LOGIN ----</h1>
             <br></br>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleLogin}>
                 <TextField 
                     label="Username" 
                     variant="outlined" 
