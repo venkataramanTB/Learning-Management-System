@@ -8,7 +8,7 @@ const useStyles = makeStyles({
         paddingTop:'25px',
         paddingBottom:'25px',
         padding: '100px',
-        display: 'flex',
+        display: 'flex',    
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
