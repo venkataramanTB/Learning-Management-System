@@ -1,6 +1,5 @@
 import React from 'react'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
-import { Switch } from 'react-router-dom'; // Add this import
 
 import Login from './Pages/Login'
 import Register from './Pages/Register'
@@ -11,12 +10,12 @@ import Profile from './Pages/Profile'
 import Settings from './Pages/Settings'
 import Logout from './Pages/Logout'
 import Home from './Pages/Home'
+import Signup from './Pages/SignUp';
 
 function App() {
   return (
     <Router>
       <div className='route'>
-        <div className='route' style={{ background: "black", minHeight: "100vh" }}>
           <Routes>
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
@@ -26,10 +25,10 @@ function App() {
             <Route path="/profile" element={<Profile />} />
             <Route path="/settings" element={<Settings />} />
             <Route path="/logout" element={<Logout />} />
+            <Route path="/signup" element={<Signup />} />
             <Route path="/" element={<Home />} />
           </Routes>
         </div>
-      </div>
     </Router>
   );
 }
