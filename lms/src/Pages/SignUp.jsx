@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Card, TextField, Button, Typography, makeStyles } from "@material-ui/core"; 
+import { Card, TextField, Button, Typography, makeStyles, MenuItem } from "@material-ui/core"; 
 import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles({
@@ -23,18 +23,34 @@ const useStyles = makeStyles({
   },
   title: {
     marginBottom: '20px',
+  },
+  error: {
+    color: 'red',
+    marginBottom: '10px',
   }
 });
 
 function Signup() {
   const classes = useStyles();
-  const [name, setName] = useState("");
+  const [username, setUsername] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [mobileNumber, setMobileNumber] = useState("");
+  const [age, setAge] = useState("");
+  const [gender, setGender] = useState("");
+  const [error, setError] = useState("");
 
-  const handleNameChange = (event) => {
-    setName(event.target.value);
+  const handleUsernameChange = (event) => {
+    setUsername(event.target.value);
+  }
+
+  const handleFirstNameChange = (event) => {
+    setFirstName(event.target.value);
+  }
+
+  const handleLastNameChange = (event) => {
+    setLastName(event.target.value);
   }
 
   const handleEmailChange = (event) => {
@@ -45,17 +61,45 @@ function Signup() {
     setPassword(event.target.value);
   }
 
-  const handleMobileNumberChange = (event) => {
-    setMobileNumber(event.target.value);
+  const handleAgeChange = (event) => {
+    setAge(event.target.value);
+  }
+
+  const handleGenderChange = (event) => {
+    setGender(event.target.value);
   }
 
   const handleSignUp = (event) => {
     event.preventDefault();
-    // Implement sign-up logic here
-    console.log("Name:", name);
+    // Validate constraints
+    if (!/^[a-zA-Z\s]+$/.test(username)) {
+      setError("Username should contain only letters and spaces.");
+      return;
+    }
+    if (!/^[a-zA-Z\s]+$/.test(firstName)) {
+      setError("First name should contain only letters and spaces.");
+      return;
+    }
+    if (!/^[a-zA-Z\s]+$/.test(lastName)) {
+      setError("Last name should contain only letters and spaces.");
+      return;
+    }
+    if (!/\S+@\S+\.\S+/.test(email)) {
+      setError("Invalid email format.");
+      return;
+    }
+    if (password.length < 8) {
+      setError("Password should have at least 8 characters.");
+      return;
+    }
+    // All constraints passed, print data to console
+    console.log("Username:", username);
+    console.log("First Name:", firstName);
+    console.log("Last Name:", lastName);
     console.log("Email:", email);
     console.log("Password:", password);
-    console.log("Mobile Number:", mobileNumber);
+    console.log("Age:", age);
+    console.log("Gender:", gender);
     // You can add logic to send the data to your backend for registration
   };
 
@@ -66,11 +110,25 @@ function Signup() {
       </Typography>
       <form onSubmit={handleSignUp}>
         <TextField 
-          label="Name" 
+          label="Username" 
           variant="outlined" 
           className={classes.input} 
-          value={name} 
-          onChange={handleNameChange} 
+          value={username} 
+          onChange={handleUsernameChange} 
+        />
+        <TextField 
+          label="First Name" 
+          variant="outlined" 
+          className={classes.input} 
+          value={firstName} 
+          onChange={handleFirstNameChange} 
+        />
+        <TextField 
+          label="Last Name" 
+          variant="outlined" 
+          className={classes.input} 
+          value={lastName} 
+          onChange={handleLastNameChange} 
         />
         <TextField 
           label="Email" 
@@ -88,12 +146,26 @@ function Signup() {
           onChange={handlePasswordChange} 
         />
         <TextField 
-          label="Mobile Number" 
+          label="Age" 
+          variant="outlined" 
+          type="number" 
+          className={classes.input} 
+          value={age} 
+          onChange={handleAgeChange} 
+        />
+        <TextField 
+          select
+          label="Gender"
           variant="outlined" 
           className={classes.input} 
-          value={mobileNumber} 
-          onChange={handleMobileNumberChange} 
-        />
+          value={gender} 
+          onChange={handleGenderChange} 
+        >
+          <MenuItem value="male">Male</MenuItem>
+          <MenuItem value="female">Female</MenuItem>
+          <MenuItem value="other">Other</MenuItem>
+        </TextField>
+        {error && <Typography className={classes.error}>{error}</Typography>}
         <Button 
           variant="contained" 
           color="primary" 
