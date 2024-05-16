@@ -14,7 +14,7 @@ const Home = () => {
                     <li><Link to="/about"><i className="fas fa-info-circle"></i>   About</Link></li>
                     {!userData && <li><Link to="/login"><i className="fas fa-sign-in-alt"></i>   Login</Link></li>}
                     {userData && <li><Link to="/logout"><i className="fas fa-sign-in-alt"></i>   Logout</Link></li>}
-                    <li><Link to="/profile"><i className="fas fa-user"></i>   Profile</Link></li>
+                    <li><Link to="/profile"><i className="fas fa-user"></i>   Profile</Link></li> 
                 </ul>
             </nav>
             <h1 className="title">Welcome to the Learning Management System</h1>
