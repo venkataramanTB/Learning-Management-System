@@ -11,7 +11,7 @@ app.use(express.json());
 app.post("/users/signup", async(req,res) =>{
     try{
     const {username, email, password, age, dob} = req.body;
-    const query = `INSERT INTO users (username, email, password, age, dob) VALUES ('${username}', '${email}', '${password}','${age}','${dob}')`;
+    const query = `INSERT INTO users (Username, email, password, age, dob) VALUES ('${username}', '${email}', '${password}','${age}','${dob}')`;
     const result = await executeQuery(query);
     res.status(200).send("User created Sucessfully");
     }
