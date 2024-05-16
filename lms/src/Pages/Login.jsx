@@ -86,7 +86,7 @@ function Login() {
                     value={password} 
                     onChange={handlePasswordChange} 
                 />
-                <Link to ="/" className={classes.link}>
+                <Link to ="/" className={classes.link}>         
                 <Button variant="contained" type="submit" className={classes.button}>
                     Submit
                 </Button>
