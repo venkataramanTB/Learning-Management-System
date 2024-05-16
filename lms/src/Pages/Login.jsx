@@ -29,7 +29,7 @@ const useStyles = makeStyles({
         marginBottom: '20px',
         width: '100%',
         border: '2px solid white',
-        borderRadius:'20px',
+        borderRadius:'5px',
         backgroundColor: 'transparent', // Make the text field transparent
         color: 'white', // Text color remains white
     },
@@ -86,9 +86,11 @@ function Login() {
                     value={password} 
                     onChange={handlePasswordChange} 
                 />
+                <Link to ="/" className={classes.link}>
                 <Button variant="contained" type="submit" className={classes.button}>
                     Submit
                 </Button>
+                </Link>
             </form>
             <Link to="/forgot-password" className={classes.link}>
                 <Typography>Forgot Password?</Typography>
