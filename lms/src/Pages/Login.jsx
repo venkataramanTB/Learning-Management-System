@@ -71,8 +71,17 @@ function Login() {
             sessionStorage.setItem('loggedInUser', JSON.stringify(user));
             setLoggedInUser(user);
             console.log(`Welcome ${username}`);
-            window.location.href='/';
-        } else {
+            window.location.href='/'; 
+        }
+        else if (username === "yash" && password === "1234") {
+            // Store user data in sessionStorage
+            const user = { username };
+            sessionStorage.setItem('loggedInUser', JSON.stringify(user));
+            setLoggedInUser(user);
+            console.log(`Welcome ${username}`);
+            window.location.href='/'; 
+        }
+         else {
             alert('Invalid Username or Password');
         }
     }
