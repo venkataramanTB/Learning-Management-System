@@ -16,17 +16,19 @@ function App() {
   return (
     <Router>
       <div className='route'>
-        <Routes>
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/courses" element={<Courses />} />
-          <Route path="/course/:id" element={<Course />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/settings" element={<Settings />} />
-          <Route path="/logout" element={<Logout />} />
-          <Route path="/" element={<Home />} />
-        </Routes>
+        <div className='route' style={{ background: "black", minHeight: "100vh" }}>
+          <Routes>
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/courses" element={<Courses />} />
+            <Route path="/course/:id" element={<Course />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/settings" element={<Settings />} />
+            <Route path="/logout" element={<Logout />} />
+            <Route path="/" element={<Home />} />
+          </Routes>
+        </div>
       </div>
     </Router>
   );
