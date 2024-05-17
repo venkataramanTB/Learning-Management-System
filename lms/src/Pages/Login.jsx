@@ -66,29 +66,41 @@ function Login() {
         setPassword(event.target.value);
     }
 
-    const handleLogin = (event) => {
+    const handleLogin = async (event) => {
         event.preventDefault();
-        if (username === "venky" && password === "1234") {
-            // Store user data in sessionStorage
-            const user = { username };
-            sessionStorage.setItem('loggedInUser', JSON.stringify(user));
-            setLoggedInUser(user);
-            console.log(`Welcome ${username}`);
-            window.location.href='/'; 
+        
+        try {
+            const response = await fetch('http://localhost:5000/user/auth/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    username: username, // Assuming username is actually the email
+                    password: password
+                })
+            });
+    
+            if (response.ok) {
+                // Parse response data to JSON
+                const userData = await response.json();
+    
+                // Store user data in sessionStorage
+                sessionStorage.setItem('loggedInUser', JSON.stringify(userData));
+    
+                // Redirect to home page or dashboard
+                window.location.href = '/';
+            } else if (response.status === 400) {
+                alert('Invalid Username or Password');
+            } else {
+                alert('Login failed');
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            alert('An error occurred. Please try again.');
         }
-        else if (username === "yash" && password === "1234") {
-            // Store user data in sessionStorage
-            const user = { username };
-            sessionStorage.setItem('loggedInUser', JSON.stringify(user));
-            setLoggedInUser(user);
-            console.log(`Welcome ${username}`);
-            window.location.href='/'; 
-        }
-         else {
-            alert('Invalid Username or Password');
-        }
-    }
-
+    }  
+    
     return (
         <ThemeProvider theme={theme}>
             <CssBaseline />

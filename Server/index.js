@@ -1,38 +1,46 @@
 const express = require("express");
 const app = express();
 const cors = require("cors");
-const {executeQuery} = require("./db");
+const { executeQuery } = require("./db");
 require("dotenv").config();
 
 app.use(cors());
 app.use(express.json());
 
-
-app.post("/users/signup", async(req,res) =>{
-    try{
-    const {username, email, password, age, dob} = req.body;
-    const query = `INSERT INTO users (Username, email, password, age, dob) VALUES ('${username}', '${email}', '${password}','${age}','${dob}')`;
-    const result = await executeQuery(query);
-    res.status(200).send("User created Sucessfully");
-    }
-    catch(err){
-        console.log(err.message);
+// Signup route
+app.post("/users/signup", async (req, res) => {
+    try {
+        const { username, email, password, age, dob } = req.body;
+        const query = `INSERT INTO users (Username, email, password, age) VALUES ('${username}', '${email}', '${password}', '${age}')`;
+        await executeQuery(query);
+        res.status(200).send("User created successfully");
+    } catch (err) {
+        console.error(err.message);
         res.status(500).send("Internal Server Error");
     }
 });
-app.get("/user/auth/login", async(req,res) => {
-    try{
-        const {email, password} = req.body;
-        const query = `SELECT * FROM users WHERE email='${email}' AND password='${password}'`;
+
+// Login route
+app.post("/user/auth/login", async (req, res) => {
+    try {
+        const { username, password } = req.body;
+        const query = `SELECT * FROM users WHERE Username='${username}' AND password='${password}'`;
         const result = await executeQuery(query);
-        if(result.length > 0){
-            res.status(200).send("Login Sucessful");
+        if (result.length > 0) {
+            // Assuming `result` contains user data
+            const userData = result[0];
+            res.status(200).json(userData); // Return user data as JSON
+        } else {
+            res.status(400).send("Invalid credentials");
         }
-        else{
-            res.status(400).send("Invalid Credentials");
-        }
-    }catch(err){
-        console.log(err.message);
+    } catch (err) {
+        console.error(err.message);
         res.status(500).send("Internal Server Error");
     }
+});
+
+
+const port = process.env.PORT || 5000;
+app.listen(port, () => {
+    console.log("Server has started on port " + port + ".");
 });

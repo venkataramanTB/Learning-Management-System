@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { Card, TextField, Button, Typography, makeStyles, MenuItem } from "@material-ui/core"; 
-import { Link } from 'react-router-dom';
+import { Card, TextField, Button, Typography, makeStyles, MenuItem } from "@material-ui/core";
+import { Link, useNavigate } from 'react-router-dom';
 
 const useStyles = makeStyles({
   card: {
@@ -9,7 +9,7 @@ const useStyles = makeStyles({
     margin: 'auto',
     marginTop: '50px',
     boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.5)',
-    background:'#EEEEEE',
+    background: '#EEEEEE',
   },
   input: {
     marginBottom: '20px',
@@ -32,6 +32,7 @@ const useStyles = makeStyles({
 
 function Signup() {
   const classes = useStyles();
+  const navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -41,37 +42,9 @@ function Signup() {
   const [gender, setGender] = useState("");
   const [error, setError] = useState("");
 
-  const handleUsernameChange = (event) => {
-    setUsername(event.target.value);
-  }
-
-  const handleFirstNameChange = (event) => {
-    setFirstName(event.target.value);
-  }
-
-  const handleLastNameChange = (event) => {
-    setLastName(event.target.value);
-  }
-
-  const handleEmailChange = (event) => {
-    setEmail(event.target.value);
-  }
-
-  const handlePasswordChange = (event) => {
-    setPassword(event.target.value);
-  }
-
-  const handleAgeChange = (event) => {
-    setAge(event.target.value);
-  }
-
-  const handleGenderChange = (event) => {
-    setGender(event.target.value);
-  }
-
-  const handleSignUp = (event) => {
+  const handleSignUp = async (event) => {
     event.preventDefault();
-    // Validate constraints
+
     if (!/^[a-zA-Z\s]+$/.test(username)) {
       setError("Username should contain only letters and spaces.");
       return;
@@ -92,15 +65,36 @@ function Signup() {
       setError("Password should have at least 8 characters.");
       return;
     }
-    // All constraints passed, print data to console
-    console.log("Username:", username);
-    console.log("First Name:", firstName);
-    console.log("Last Name:", lastName);
-    console.log("Email:", email);
-    console.log("Password:", password);
-    console.log("Age:", age);
-    console.log("Gender:", gender);
-    // You can add logic to send the data to your backend for registration
+
+    const signupData = { 
+      username, 
+      email, 
+      password, 
+      age, 
+      firstName, 
+      lastName, 
+      gender 
+    };
+    console.log(signupData);
+
+    try {
+      const response = await fetch('http://localhost:5000/users/signup', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(signupData)
+      });
+
+      if (response.ok) {
+        alert(`Hello ${username}, please log in.`);
+        navigate('/login');
+      } else {
+        const errorData = await response.json();
+        setError(`Failed to create user: ${errorData.message}`);
+      }
+    } catch (err) {
+      console.error("Fetch error:", err);
+      setError("An error occurred. Please try again.");
+    }
   };
 
   return (
@@ -109,73 +103,72 @@ function Signup() {
         Sign Up
       </Typography>
       <form onSubmit={handleSignUp}>
-        <TextField 
-          label="Username" 
-          variant="outlined" 
-          className={classes.input} 
-          value={username} 
-          onChange={handleUsernameChange} 
+        <TextField
+          label="Username"
+          variant="outlined"
+          className={classes.input}
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
         />
-        <TextField 
-          label="First Name" 
-          variant="outlined" 
-          className={classes.input} 
-          value={firstName} 
-          onChange={handleFirstNameChange} 
+        <TextField
+          label="First Name"
+          variant="outlined"
+          className={classes.input}
+          value={firstName}
+          onChange={(e) => setFirstName(e.target.value)}
         />
-        <TextField 
-          label="Last Name" 
-          variant="outlined" 
-          className={classes.input} 
-          value={lastName} 
-          onChange={handleLastNameChange} 
+        <TextField
+          label="Last Name"
+          variant="outlined"
+          className={classes.input}
+          value={lastName}
+          onChange={(e) => setLastName(e.target.value)}
         />
-        <TextField 
-          label="Email" 
-          variant="outlined" 
-          className={classes.input} 
-          value={email} 
-          onChange={handleEmailChange} 
+        <TextField
+          label="Email"
+          variant="outlined"
+          className={classes.input}
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
         />
-        <TextField 
-          label="Password" 
-          variant="outlined" 
-          type="password" 
-          className={classes.input} 
-          value={password} 
-          onChange={handlePasswordChange} 
+        <TextField
+          label="Password"
+          variant="outlined"
+          type="password"
+          className={classes.input}
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
         />
-        <TextField 
-          label="Age" 
-          variant="outlined" 
-          type="number" 
-          className={classes.input} 
-          value={age} 
-          onChange={handleAgeChange} 
+        <TextField
+          label="Age"
+          variant="outlined"
+          type="number"
+          className={classes.input}
+          value={age}
+          onChange={(e) => setAge(e.target.value)}
         />
-        <TextField 
+        <TextField
           select
           label="Gender"
-          variant="outlined" 
-          className={classes.input} 
-          value={gender} 
-          onChange={handleGenderChange} 
+          variant="outlined"
+          className={classes.input}
+          value={gender}
+          onChange={(e) => setGender(e.target.value)}
         >
           <MenuItem value="male">Male</MenuItem>
           <MenuItem value="female">Female</MenuItem>
           <MenuItem value="other">Other</MenuItem>
         </TextField>
         {error && <Typography className={classes.error}>{error}</Typography>}
-        <Button 
-          variant="contained" 
-          color="primary" 
-          type="submit" 
+        <Button
+          variant="contained"
+          color="primary"
+          type="submit"
           className={classes.button}
         >
           Sign Up
         </Button>
       </form>
-      {/* Link to navigate to the login page */}
       <div>
         <p>Already have an account? <Link to="/login">Login</Link></p>
       </div>

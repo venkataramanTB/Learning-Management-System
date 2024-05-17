@@ -2,6 +2,7 @@ const mysql = require('mysql2/promise');
 const fs = require('fs');
 const dotenv = require('dotenv');
 dotenv.config();
+
 const dbConfig = {
   host: process.env.DB_HOST,
   user: process.env.DB_USER,
@@ -11,23 +12,24 @@ const dbConfig = {
   ssl: { ca: fs.readFileSync('./DigiCertGlobalRootCA.crt.pem') },
   connectionLimit: 10,
 };
+
 const pool = mysql.createPool(dbConfig);
 
-const executeQuery = async(query) => {
+const executeQuery = async (query, values = []) => {
   let connection;
   try {
     connection = await pool.getConnection();
-
-    const [rows] = await connection.execute(query);
+    const [rows] = await connection.execute(query, values);
     console.log("Connection Successful....!");
     return rows;
   } catch (error) {
     console.error('Error executing query:', error.message);
-    throw error; 
+    throw error;
   } finally {
     if (connection) {
-      connection.release(); 
+      connection.release();
     }
   }
-}
+};
+
 module.exports = { executeQuery };
