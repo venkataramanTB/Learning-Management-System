@@ -5,16 +5,16 @@ import './Profile.css';
 const Profile = () => {
     const cachedUser = sessionStorage.getItem('loggedInUser');
     const user = cachedUser ? JSON.parse(cachedUser) : null;
-
     return (
         <div className="card">
             <div className="profile">
                 <h1>Profile</h1>
                 {user ? (
                     <React.Fragment>
-                        <p><strong>Name:</strong> {user.username}</p>
-                        <p><strong>Email:</strong> {user.email}</p>
-                        <p><strong>Age:</strong> {user.age}</p>
+                        <p><strong>Username:</strong> {user.Username}</p>
+                        <p><strong>Full Name:</strong> {user.FirstName} {user.LastName}</p>
+                        <p><strong>Email:</strong> {user.Email}</p>
+                        <p><strong>Age:</strong> {user.Age}</p>
                         <p><strong>Course:</strong> {user.course}</p>
                     </React.Fragment>
                 ) : (

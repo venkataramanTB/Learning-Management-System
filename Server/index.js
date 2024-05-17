@@ -39,6 +39,9 @@ app.post("/user/auth/login", async (req, res) => {
     }
 });
 
+// Courses route with users
+
+
 
 const port = process.env.PORT || 5000;
 app.listen(port, () => {

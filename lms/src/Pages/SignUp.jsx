@@ -76,6 +76,9 @@ function Signup() {
       gender 
     };
     console.log(signupData);
+    const profileData = {
+      uname : username
+    };
 
     try {
       const response = await fetch('http://localhost:5000/users/signup', {
