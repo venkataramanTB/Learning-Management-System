@@ -10,8 +10,8 @@ app.use(express.json());
 // Signup route
 app.post("/users/signup", async (req, res) => {
     try {
-        const { username, email, password, age, dob } = req.body;
-        const query = `INSERT INTO users (Username, email, password, age) VALUES ('${username}', '${email}', '${password}', '${age}')`;
+        const { username, email, password,firstName, lastName, age, gender} = req.body;
+        const query = `INSERT INTO users (Username, Email, Password, FirstName, LastName, Age, Gender) VALUES ('${username}', '${email}', '${password}','${firstName}','${lastName}', '${age}', '${gender}')`;
         await executeQuery(query);
         res.status(200).send("User created successfully");
     } catch (err) {
