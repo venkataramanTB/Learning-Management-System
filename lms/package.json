@@ -9,6 +9,7 @@
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^12.1.5",
     "@testing-library/user-event": "^13.5.0",
+    "peer": "^1.0.2",
     "react-bootstrap": "^2.10.2",
     "react-router-dom": "^6.23.1",
     "react-scripts": "5.0.1",
