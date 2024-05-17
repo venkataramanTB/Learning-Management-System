@@ -1,8 +1,78 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { makeStyles } from '@material-ui/core/styles';
+import { 
+    Container, 
+    Typography, 
+    Grid, 
+    Card, 
+    CardContent, 
+    Button 
+} from '@material-ui/core';
+
+const useStyles = makeStyles({
+    root: {
+        textAlign: 'center',
+        marginTop: '50px',
+    },
+    navbar: {
+        listStyleType: 'none',
+        padding: 0,
+        margin: '0',
+        backgroundColor: '#f2f2f2',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        padding: '10px 0',
+    },
+    navItem: {
+        margin: '0 10px',
+        cursor: 'pointer',
+        transition: 'color 0.3s ease',
+        fontFamily: 'Arial, sans-serif', // Font styling added
+    },
+    navItemHovered: {
+        color: '#76ABAE',
+    },
+    title: {
+        fontSize: '36px',
+        marginTop: '20px',
+    },
+    courseCard: {
+        width: '300px',
+        margin: '10px',
+        padding: '20px',
+        border: '1px solid #ccc',
+        borderRadius: '5px',
+    },
+    viewCourseBtn: {
+        backgroundColor: '#76ABAE',
+        color: 'white',
+        padding: '10px 20px',
+        textDecoration: 'none',
+        borderRadius: '5px',
+        transition: 'background-color 0.3s ease',
+        '&:hover': {
+            backgroundColor: '#5c8d91',
+        },
+        fontFamily: 'Arial, sans-serif', // Font styling added
+    },
+});
+
 const Courses = () => {
+    const classes = useStyles();
+    const [hoveredItem, setHoveredItem] = React.useState(null);
+
+    const handleMouseEnter = (index) => {
+        setHoveredItem(index);
+    };
+
+    const handleMouseLeave = () => {
+        setHoveredItem(null);
+    };
+
     const courses = [
-        { id: 1, name: 'Course 1', offer: '50% off' },
+        { id: 1, name: 'HTML Course', offer: '50% off' },
         { id: 2, name: 'Course 2', offer: '30% off' },
         { id: 3, name: 'Course 3', offer: '20% off' },
         { id: 4, name: 'Course 4', offer: '10% off' },
@@ -14,27 +84,38 @@ const Courses = () => {
     ];
 
     return (
-        <div style={{ textAlign: 'center', marginTop: '50px' }}>
+        <Container className={classes.root}>
             <nav>
-                <ul style={{ listStyleType: 'none', padding: 0, margin: 0, backgroundColor: '#f2f2f2' }}>
-                    <li style={{ display: 'inline', marginRight: '10px' }}><Link to="/"><i className="fas fa-home"></i>   Home</Link></li>
-                    <li style={{ display: 'inline', marginRight: '10px' }}><Link to="/about"><i className="fas fa-info-circle"></i>   About</Link></li>
-                    <li style={{ display: 'inline', marginRight: '10px' }}><Link to="/profile"><i className="fas fa-user"></i>   Profile</Link></li>  
-                    <li style={{ display: 'inline', marginRight: '10px' }}><Link to="/courses"><i className='fas fa-books'></i>  Courses</Link></li>
-                    <li style={{ display: 'inline', marginRight: '10px' }}><Link to="/login"><i className="fas fa-sign-in-alt"></i>   Login</Link></li>
+                <ul className={classes.navbar}>
+                    <li className={`${classes.navItem} ${hoveredItem === 0 ? classes.navItemHovered : ''}`} onMouseEnter={() => handleMouseEnter(0)} onMouseLeave={handleMouseLeave}><Link to="/">Home</Link></li>
+                    <li className={`${classes.navItem} ${hoveredItem === 1 ? classes.navItemHovered : ''}`} onMouseEnter={() => handleMouseEnter(1)} onMouseLeave={handleMouseLeave}><Link to="/about">About</Link></li>
+                    <li className={`${classes.navItem} ${hoveredItem === 2 ? classes.navItemHovered : ''}`} onMouseEnter={() => handleMouseEnter(2)} onMouseLeave={handleMouseLeave}><Link to="/profile">Profile</Link></li>
+                    <li className={`${classes.navItem} ${hoveredItem === 3 ? classes.navItemHovered : ''}`} onMouseEnter={() => handleMouseEnter(3)} onMouseLeave={handleMouseLeave}><Link to="/courses">Courses</Link></li>
+                    <li className={`${classes.navItem} ${hoveredItem === 4 ? classes.navItemHovered : ''}`} onMouseEnter={() => handleMouseEnter(4)} onMouseLeave={handleMouseLeave}><Link to="/login">Login</Link></li>
                 </ul>
             </nav>
-            <h1 style={{ fontSize: '36px', marginTop: '20px' }}>Available Courses</h1>
-            <div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', marginTop: '20px' }}>
+            <Typography variant="h1" className={classes.title}>Available Courses</Typography>
+            <Grid container justify="center" spacing={4}>
                 {courses.map(course => (
-                    <div key={course.id} style={{ width: '300px', margin: '10px', padding: '20px', border: '1px solid #ccc', borderRadius: '5px' }}>
-                        <h3>{course.name}</h3>
-                        <p>Offer: {course.offer}</p>
-                        <Link to={`/course/${course.id}`} style={{ backgroundColor: '#007bff', color: 'white', padding: '5px 10px', textDecoration: 'none', borderRadius: '5px' }}>View Course</Link>
-                    </div>
+                    <Grid item key={course.id}>
+                        <Card className={classes.courseCard}>
+                            <CardContent>
+                                <Typography variant="h5" component="h5">{course.name}</Typography>
+                                <Typography color="textSecondary">Offer: {course.offer}</Typography>
+                                <Button 
+                                    component={Link} 
+                                    to={`/course/${course.id}`} 
+                                    variant="contained" 
+                                    className={classes.viewCourseBtn}
+                                >
+                                    View Course
+                                </Button>
+                            </CardContent>
+                        </Card>
+                    </Grid>
                 ))}
-            </div>
-        </div>
+            </Grid>
+        </Container>
     );
 }
 
