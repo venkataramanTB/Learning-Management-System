@@ -117,7 +117,7 @@ function Login() {
                     </form>
                     <Typography variant="body1" align="center">
                         Don't have an account?{" "}
-                        <Link component={RouterLink} to="/signup">Sign up</Link> {/* Link to the sign-up page */}
+                        <Link component={RouterLink} to="/signup">Sign up</Link> 
                     </Typography>
                 </Card>
             </div>
