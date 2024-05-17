@@ -1,74 +1,41 @@
-// src/Pages/Courses.jsx
 import React from 'react';
-import { Card, Typography, makeStyles, List, ListItem, ListItemText } from '@material-ui/core';
+import { Link } from 'react-router-dom';
+const Courses = () => {
+    const courses = [
+        { id: 1, name: 'Course 1', offer: '50% off' },
+        { id: 2, name: 'Course 2', offer: '30% off' },
+        { id: 3, name: 'Course 3', offer: '20% off' },
+        { id: 4, name: 'Course 4', offer: '10% off' },
+        { id: 5, name: 'Course 5', offer: 'No offer' },
+        { id: 6, name: 'Course 6', offer: '40% off' },
+        { id: 7, name: 'Course 7', offer: '15% off' },
+        { id: 8, name: 'Course 8', offer: '25% off' },
+        { id: 9, name: 'Course 9', offer: '5% off' },
+    ];
 
-const useStyles = makeStyles({
-  container: {
-    display: 'flex',
-    padding: '20px',
-  },
-  profile: {
-    flex: '0 0 250px',
-    padding: '20px',
-    marginRight: '20px',
-    boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.5)',
-    background:'#EEEEEE',
-  },
-  courses: {
-    flex: 1,
-    padding: '20px',
-    boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.5)',
-    background:'#FFFFFF',
-  },
-  list: {
-    marginTop: '20px',
-  }
-});
-
-function Courses() {
-  const classes = useStyles();
-
-  const userInfo = {
-    name: 'John Doe',
-    email: 'john@example.com',
-    age: 28,
-    gender: 'Male',
-  };
-
-  const enrolledCourses = [
-    { name: 'Course A', progress: 50 }, // Progress in percentage
-    { name: 'Course B', progress: 75 },
-    { name: 'Course C', progress: 30 },
-    { name: 'Course D', progress: 90 },
-  ];
-
-  return (
-    <div className={classes.container}>
-      {/* User profile */}
-      <Card className={classes.profile}>
-        <Typography variant="h6">User Profile</Typography>
-        <Typography>Name: {userInfo.name}</Typography>
-        <Typography>Email: {userInfo.email}</Typography>
-        <Typography>Age: {userInfo.age}</Typography>
-        <Typography>Gender: {userInfo.gender}</Typography>
-      </Card>
-
-      {/* Enrolled courses */}
-      <Card className={classes.courses}>
-        <Typography variant="h6">Enrolled Courses</Typography>
-        <List className={classes.list}>
-          {enrolledCourses.map((course, index) => (
-            <ListItem key={index}>
-              <ListItemText
-                primary={course.name}
-                secondary={`Progress: ${course.progress}%`}
-              />
-            </ListItem>
-          ))}
-        </List>
-      </Card>
-    </div>
-  );
+    return (
+        <div style={{ textAlign: 'center', marginTop: '50px' }}>
+            <nav>
+                <ul style={{ listStyleType: 'none', padding: 0, margin: 0, backgroundColor: '#f2f2f2' }}>
+                    <li style={{ display: 'inline', marginRight: '10px' }}><Link to="/"><i className="fas fa-home"></i>   Home</Link></li>
+                    <li style={{ display: 'inline', marginRight: '10px' }}><Link to="/about"><i className="fas fa-info-circle"></i>   About</Link></li>
+                    <li style={{ display: 'inline', marginRight: '10px' }}><Link to="/profile"><i className="fas fa-user"></i>   Profile</Link></li>  
+                    <li style={{ display: 'inline', marginRight: '10px' }}><Link to="/courses"><i className='fas fa-books'></i>  Courses</Link></li>
+                    <li style={{ display: 'inline', marginRight: '10px' }}><Link to="/login"><i className="fas fa-sign-in-alt"></i>   Login</Link></li>
+                </ul>
+            </nav>
+            <h1 style={{ fontSize: '36px', marginTop: '20px' }}>Available Courses</h1>
+            <div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', marginTop: '20px' }}>
+                {courses.map(course => (
+                    <div key={course.id} style={{ width: '300px', margin: '10px', padding: '20px', border: '1px solid #ccc', borderRadius: '5px' }}>
+                        <h3>{course.name}</h3>
+                        <p>Offer: {course.offer}</p>
+                        <Link to={`/course/${course.id}`} style={{ backgroundColor: '#007bff', color: 'white', padding: '5px 10px', textDecoration: 'none', borderRadius: '5px' }}>View Course</Link>
+                    </div>
+                ))}
+            </div>
+        </div>
+    );
 }
 
 export default Courses;

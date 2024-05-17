@@ -1,0 +1,76 @@
+/* Courses.css */
+
+.courses-container {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.navbar {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    background-color: #f2f2f2;
+}
+
+.navbar li {
+    display: inline;
+    margin-right: 10px;
+}
+
+.navbar li a {
+    color: #333;
+    text-decoration: none;
+    padding: 10px 15px;
+    display: inline-block;
+}
+
+.navbar li a:hover {
+    background-color: #ddd;
+    border-radius: 5px;
+}
+
+.title {
+    font-size: 36px;
+    margin-top: 20px;
+}
+
+.courses-grid {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.course-card {
+    width: 300px;
+    margin: 10px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+}
+
+.course-name {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.course-offer {
+    font-size: 16px;
+    margin-bottom: 20px;
+    color: #666;
+}
+
+.view-course-btn {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.view-course-btn:hover {
+    background-color: #0056b3;
+}
