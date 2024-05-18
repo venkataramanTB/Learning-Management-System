@@ -64,9 +64,9 @@ const useStyles = makeStyles((theme) => ({
 
 const Dash = () => {
     const classes = useStyles();
-
+    const userDetails = sessionStorage.getItem('loggedInUser');
     const user = {
-        name: 'John Doe',
+        name: 'Doe',
         email: 'john.doe@example.com',
         avatar: 'https://via.placeholder.com/150',
     };

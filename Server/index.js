@@ -29,6 +29,7 @@ app.post("/user/auth/login", async (req, res) => {
         if (result.length > 0) {
             // Assuming `result` contains user data
             const userData = result[0];
+            console.log(`Logged in as ${username}`);
             res.status(200).json(userData); // Return user data as JSON
         } else {
             res.status(400).send("Invalid credentials");

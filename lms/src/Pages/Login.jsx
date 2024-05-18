@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { Card, TextField, Button, Typography, makeStyles, Link, CssBaseline } from "@material-ui/core"; // Import CssBaseline
+import { Card, TextField, Button, Typography, makeStyles, Link, CssBaseline, Dialog, DialogTitle, DialogContent, DialogActions } from "@material-ui/core";
 import { createTheme, ThemeProvider } from '@material-ui/core/styles';
-import { Link as RouterLink } from "react-router-dom"; // Import RouterLink from react-router-dom
-
+import { Link as RouterLink } from "react-router-dom";
+import { PuffLoader } from "react-spinners";
 
 const theme = createTheme({
   overrides: {
@@ -49,14 +49,20 @@ const useStyles = makeStyles({
     h1:{
         textAlign: 'left',
         color: '#93B1A6',
-    }    
+    },
+    loaderContainer: {
+        display: 'flex',
+        justifyContent: 'center',
+        marginTop: '20px',
+    },  
 });
 
 function Login() {
     const classes = useStyles();
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-    const [loggedInUser, setLoggedInUser] = useState(null);
+    const [loading, setLoading] = useState(false);
+    const [errorDialogOpen, setErrorDialogOpen] = useState(false); // State for error dialog
 
     const handleUsernameChange = (event) => {
         setUsername(event.target.value);
@@ -68,6 +74,7 @@ function Login() {
 
     const handleLogin = async (event) => {
         event.preventDefault();
+        setLoading(true);
         
         try {
             const response = await fetch('http://localhost:5000/user/auth/login', {
@@ -76,28 +83,25 @@ function Login() {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-                    username: username, // Assuming username is actually the email
+                    username: username,
                     password: password
                 })
             });
     
             if (response.ok) {
-                // Parse response data to JSON
                 const userData = await response.json();
-    
-                // Store user data in sessionStorage
                 sessionStorage.setItem('loggedInUser', JSON.stringify(userData));
-    
-                // Redirect to home page or dashboard
                 window.location.href = '/';
             } else if (response.status === 400) {
-                alert('Invalid Username or Password');
+                setErrorDialogOpen(true); // Open error dialog
             } else {
-                alert('Login failed');
+                setErrorDialogOpen(true); // Open error dialog
             }
         } catch (error) {
             console.error('Error:', error);
-            alert('An error occurred. Please try again.');
+            setErrorDialogOpen(true); // Open error dialog
+        } finally {
+            setLoading(false);
         }
     }  
     
@@ -131,6 +135,21 @@ function Login() {
                         Don't have an account?{" "}
                         <Link component={RouterLink} to="/signup">Sign up</Link> 
                     </Typography>
+                    {loading && (
+                        <div className={classes.loaderContainer}>
+                            <PuffLoader color="#36d7b7" />
+                        </div>
+                    )}
+                    {/* Error dialog */}
+                    <Dialog open={errorDialogOpen} onClose={() => setErrorDialogOpen(false)}>
+                        <DialogTitle>Error</DialogTitle>
+                        <DialogContent>
+                            <Typography variant="body1">Invalid Username or Password. Please try again.</Typography>
+                        </DialogContent>
+                        <DialogActions>
+                            <Button onClick={() => setErrorDialogOpen(false)} color="primary">OK</Button>
+                        </DialogActions>
+                    </Dialog>
                 </Card>
             </div>
         </ThemeProvider>
