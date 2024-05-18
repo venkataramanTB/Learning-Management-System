@@ -1,4 +1,4 @@
-// src/Pages/Courses.jsx
+
 import React from 'react';
 import { Card, Typography, makeStyles, List, ListItem, ListItemText } from '@material-ui/core';
 
