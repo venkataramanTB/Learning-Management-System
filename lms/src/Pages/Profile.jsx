@@ -23,7 +23,7 @@ const Profile = () => {
                     <Link to="/login">Not yet Logged in</Link>
                     </React.Fragment>
                 )}
-                <Link to="/dashboard">Go to Dashboard</Link>
+                <Link to="/dash">Go to Dashboard</Link>
                 <Link to="/logout">Logout</Link>
             </div>
         </div>

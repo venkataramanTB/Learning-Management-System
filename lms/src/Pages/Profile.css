@@ -33,7 +33,7 @@
 .profile a {
     display: inline-block;
     color: white;
-    background-color: #007BFF;
+    background-color: #76ABAE;
     border: none;
     padding: 12px 24px;
     margin-top: 24px;
@@ -45,5 +45,5 @@
 }
 
 .profile a:hover {
-    background-color: #0056b3;
+    background-color: #5c8d91;
 }

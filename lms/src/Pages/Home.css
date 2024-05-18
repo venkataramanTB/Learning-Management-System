@@ -4,7 +4,7 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #000;
+    background-color: #f3ebeb;
     animation: fadeIn 1s ease-in;
     font-family: 'Arial', sans-serif;
     padding: 0 20px; /* Added padding for better spacing */
@@ -12,7 +12,7 @@
 
 .title {
     font-size: 3rem;
-    color: #fff;
+    color: #151414;
     text-shadow: 2px 2px 4px rgba(144, 139, 139, 0.5);
     margin-bottom: 20px;
     animation: titleFade 2s ease-in forwards;
@@ -20,7 +20,7 @@
 
 .description {
     font-size: 1.5rem;
-    color: #fff;
+    color: #0b0b0b;
     text-align: center;
 }
 
@@ -31,7 +31,7 @@
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #1c1b1b;
+    background-color: #f8f3f3;
     position: fixed;
     left: 0;
     top: 0;
@@ -48,7 +48,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    color: white;
+    color: rgb(12, 12, 12);
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
@@ -64,12 +64,12 @@
 }
 
 .navbar li a:hover {
-    background-color: #111;
+    background-color: #f9f4f4;
 }
 
 .login-button {
     display: inline-block;
-    color: white;
+    color: rgb(8, 8, 8);
     background-color: #007BFF;
     border: none;
     padding: 12px 24px;
@@ -82,7 +82,7 @@
 }
 
 .login-button:hover {
-    background-color: #0056b3;
+    background-color: #5c8d91;
 }
 
 @keyframes fadeIn {

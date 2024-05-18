@@ -1,74 +1,146 @@
-// src/Pages/Courses.jsx
 import React from 'react';
-import { Card, Typography, makeStyles, List, ListItem, ListItemText } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
+import {
+    Container,
+    Grid,
+    Card,
+    CardContent,
+    Typography,
+    Avatar,
+    Box,
+} from '@material-ui/core';
+import { Pie, Bar } from 'react-chartjs-2';
+import {
+    Chart as ChartJS,
+    ArcElement,
+    CategoryScale,
+    LinearScale,
+    BarElement,
+    Title,
+    Tooltip,
+    Legend,
+} from 'chart.js';
 
-const useStyles = makeStyles({
-  container: {
-    display: 'flex',
-    padding: '20px',
-  },
-  profile: {
-    flex: '0 0 250px',
-    padding: '20px',
-    marginRight: '20px',
-    boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.5)',
-    background:'#EEEEEE',
-  },
-  courses: {
-    flex: 1,
-    padding: '20px',
-    boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.5)',
-    background:'#FFFFFF',
-  },
-  list: {
-    marginTop: '20px',
-  }
-});
+// Registering the components
+ChartJS.register(
+    ArcElement,
+    CategoryScale,
+    LinearScale,
+    BarElement,
+    Title,
+    Tooltip,
+    Legend
+);
 
-function Dash() {
-  const classes = useStyles();
+const useStyles = makeStyles((theme) => ({
+    root: {
+        marginTop: theme.spacing(5),
+    },
+    profileSection: {
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        padding: theme.spacing(2),
+    },
+    largeAvatar: {
+        width: theme.spacing(10),
+        height: theme.spacing(10),
+        marginBottom: theme.spacing(2),
+    },
+    card: {
+        marginBottom: theme.spacing(2),
+    },
+    chartContainer: {
+        width: '100%',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    pieChart: {
+        width: '250px', // Set the desired width
+        height: '250px', // Set the desired height
+    },
+}));
 
-  const userInfo = {
-    name: 'John Doe',
-    email: 'john@example.com',
-    age: 28,
-    gender: 'Male',
-  };
+const Dash = () => {
+    const classes = useStyles();
 
-  const enrolledCourses = [
-    { name: 'Course A', progress: 50 }, 
-    { name: 'Course B', progress: 75 },
-    { name: 'Course C', progress: 30 },
-    { name: 'Course D', progress: 90 },
-  ];
+    const user = {
+        name: 'John Doe',
+        email: 'john.doe@example.com',
+        avatar: 'https://via.placeholder.com/150',
+    };
 
-  return (
-    <div className={classes.container}>
-      {/* User profile */}
-      <Card className={classes.profile}>
-        <Typography variant="h6">User Profile</Typography>
-        <Typography>Name: {userInfo.name}</Typography>
-        <Typography>Email: {userInfo.email}</Typography>
-        <Typography>Age: {userInfo.age}</Typography>
-        <Typography>Gender: {userInfo.gender}</Typography>
-      </Card>
+    const pieData = {
+        labels: ['HTML', 'CSS', 'JavaScript', 'React', 'Node.js'],
+        datasets: [
+            {
+                data: [10, 20, 30, 25, 15],
+                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF'],
+            },
+        ],
+    };
 
-      {/* Enrolled courses */}
-      <Card className={classes.courses}>
-        <Typography variant="h6">Enrolled Courses</Typography>
-        <List className={classes.list}>
-          {enrolledCourses.map((course, index) => (
-            <ListItem key={index}>
-              <ListItemText
-                primary={course.name}
-                secondary={`Progress: ${course.progress}%`}
-              />
-            </ListItem>
-          ))}
-        </List>
-      </Card>
-    </div>
-  );
-}
+    const barData = {
+        labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+        datasets: [
+            {
+                label: 'Performance',
+                data: [65, 59, 80, 81, 56, 55],
+                backgroundColor: 'rgba(75,192,192,0.4)',
+                borderColor: 'rgba(75,192,192,1)',
+                borderWidth: 1,
+            },
+        ],
+    };
+
+    const barOptions = {
+        scales: {
+            y: {
+                beginAtZero: true,
+            },
+        },
+    };
+
+    return (
+        <Container className={classes.root}>
+            <Grid container spacing={3}>
+                <Grid item xs={12} md={4}>
+                    <Card className={classes.card}>
+                        <CardContent className={classes.profileSection}>
+                            <Avatar alt={user.name} src={user.avatar} className={classes.largeAvatar} />
+                            <Typography variant="h6">{user.name}</Typography>
+                            <Typography color="textSecondary">{user.email}</Typography>
+                        </CardContent>
+                    </Card>
+                </Grid>
+                <Grid item xs={12} md={8}>
+                    <Card className={classes.card}>
+                        <CardContent>
+                            <Typography variant="h6" gutterBottom>
+                                Courses Enrolled
+                            </Typography>
+                            <Box className={classes.chartContainer}>
+                                <div className={classes.pieChart}>
+                                    <Pie data={pieData} />
+                                </div>
+                            </Box>
+                        </CardContent>
+                    </Card>
+                    <Card className={classes.card}>
+                        <CardContent>
+                            <Typography variant="h6" gutterBottom>
+                                Performance Over Months
+                            </Typography>
+                            <Box>
+                                <Bar data={barData} options={barOptions} />
+                            </Box>
+                        </CardContent>
+                    </Card>
+                </Grid>
+            </Grid>
+        </Container>
+    );
+};
 
 export default Dash;
