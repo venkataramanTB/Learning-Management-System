@@ -15,6 +15,7 @@ const useStyles = makeStyles({
         textAlign: 'center',
         marginTop: '50px',
     },
+    
     navbar: {
         listStyleType: 'none',
         padding: 0,
