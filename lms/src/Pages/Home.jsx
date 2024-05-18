@@ -8,19 +8,42 @@ const Home = () => {
 
     return (
         <div className="home">
-            <nav>
-                <ul className="navbar">
-                    <li><Link to="/"><i className="fas fa-home"></i>   Home</Link></li>
-                    <li><Link to="/about"><i className="fas fa-info-circle"></i>   About</Link></li>
-                    <li><Link to="/profile"><i className="fas fa-user"></i>   Profile</Link></li>  
-                    <li><Link to="/courses"><i className='fas fa-book'></i>  Courses</Link></li>
-                    {!userData && <li><Link to="/login"><i className="fas fa-sign-in-alt"></i>   Login</Link></li>}
-                    {userData && <li><Link to="/logout"><i className="fas fa-sign-in-alt"></i>   Logout</Link></li>}
-                </ul>
+            <nav className="navbar">
+                <div className="navbar-container">
+                    <Link to="/" className="nav-logo">
+                        LMS
+                    </Link>
+                    <ul className="nav-menu">
+                        <li className="nav-item">
+                            <Link to="/" className="nav-links"><i className="fas fa-home"></i> Home</Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link to="/about" className="nav-links"><i className="fas fa-info-circle"></i> About</Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link to="/profile" className="nav-links"><i className="fas fa-user"></i> Profile</Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link to="/courses" className="nav-links"><i className="fas fa-book"></i> Courses</Link>
+                        </li>
+                        {!userData && (
+                            <li className="nav-item">
+                                <Link to="/login" className="nav-links"><i className="fas fa-sign-in-alt"></i> Login</Link>
+                            </li>
+                        )}
+                        {userData && (
+                            <li className="nav-item">
+                                <Link to="/logout" className="nav-links"><i className="fas fa-sign-out-alt"></i> Logout</Link>
+                            </li>
+                        )}
+                    </ul>
+                </div>
             </nav>
-            <h1 className="title">Welcome to the Learning Management System</h1>
-            <p className="description">Our Learning Management System provides a comprehensive, customizable, scalable, and easy to use platform to educators and learners. We are committed to making learning accessible and effective for all. Explore courses, create your own learning paths, and achieve your educational goals here.</p>
-            <Link to="/login" className="login-button">Get Started</Link>
+            <div className="home-content">
+                <h1 className="title">Welcome to the Learning Management System</h1>
+                <p className="description">Our Learning Management System provides a comprehensive, customizable, scalable, and easy to use platform to educators and learners. We are committed to making learning accessible and effective for all. Explore courses, create your own learning paths, and achieve your educational goals here.</p>
+                <Link to="/login" className="cta-button">Get Started</Link>
+            </div>
         </div>
     );
 }
