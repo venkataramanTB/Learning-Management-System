@@ -70,7 +70,7 @@ const Dash = () => {
         email: 'john.doe@example.com',
         avatar: 'https://via.placeholder.com/150',
     };
-
+    // const userData = sessionStorage.getItem('loggedInUser');
     const pieData = {
         labels: ['HTML', 'CSS', 'JavaScript', 'React', 'Node.js'],
         datasets: [
