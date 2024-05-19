@@ -12,25 +12,26 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: #1c1b1b91;
+    background-color: #ffffff;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin: 200px;
+    margin: 120px auto;
+    max-width: 800px;
 }
 
 .profile h1 {
     font-size: 2.5rem;
-    color: #edeee1;
+    color: #333;
 }
 
 .profile p {
     font-size: 1.2rem;
-    color: #ebe5e5;
+    color: #666;
     margin: 10px 0;
 }
 
-.profile a {
+.cta-button {
     display: inline-block;
     color: white;
     background-color: #76ABAE;
@@ -44,6 +45,6 @@
     transition: background-color 0.3s ease;
 }
 
-.profile a:hover {
+.cta-button:hover {
     background-color: #5c8d91;
 }

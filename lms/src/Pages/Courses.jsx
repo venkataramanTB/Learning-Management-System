@@ -9,35 +9,17 @@ import {
     CardContent, 
     Button 
 } from '@material-ui/core';
+import './Home.css'; // Reuse the Home.css for consistent styling
 
 const useStyles = makeStyles({
     root: {
         textAlign: 'center',
         marginTop: '50px',
     },
-    
-    navbar: {
-        listStyleType: 'none',
-        padding: 0,
-        margin: '0',
-        backgroundColor: '#f2f2f2',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        padding: '10px 0',
-    },
-    navItem: {
-        margin: '0 10px',
-        cursor: 'pointer',
-        transition: 'color 0.3s ease',
-        fontFamily: 'Arial, sans-serif', // Font styling added
-    },
-    navItemHovered: {
-        color: '#76ABAE',
-    },
     title: {
         fontSize: '36px',
         marginTop: '20px',
+        color: '#000000', // Changed to black
     },
     courseCard: {
         width: '300px',
@@ -56,7 +38,7 @@ const useStyles = makeStyles({
         '&:hover': {
             backgroundColor: '#5c8d91',
         },
-        fontFamily: 'Arial, sans-serif', // Font styling added
+        fontFamily: 'Arial, sans-serif',
     },
 });
 
@@ -85,38 +67,55 @@ const Courses = () => {
     ];
 
     return (
-        <Container className={classes.root}>
-            <nav>
-                <ul className={classes.navbar}>
-                    <li className={`${classes.navItem} ${hoveredItem === 0 ? classes.navItemHovered : ''}`} onMouseEnter={() => handleMouseEnter(0)} onMouseLeave={handleMouseLeave}><Link to="/">Home</Link></li>
-                    <li className={`${classes.navItem} ${hoveredItem === 1 ? classes.navItemHovered : ''}`} onMouseEnter={() => handleMouseEnter(1)} onMouseLeave={handleMouseLeave}><Link to="/about">About</Link></li>
-                    <li className={`${classes.navItem} ${hoveredItem === 2 ? classes.navItemHovered : ''}`} onMouseEnter={() => handleMouseEnter(2)} onMouseLeave={handleMouseLeave}><Link to="/profile">Profile</Link></li>
-                    <li className={`${classes.navItem} ${hoveredItem === 3 ? classes.navItemHovered : ''}`} onMouseEnter={() => handleMouseEnter(3)} onMouseLeave={handleMouseLeave}><Link to="/courses">Courses</Link></li>
-                    <li className={`${classes.navItem} ${hoveredItem === 4 ? classes.navItemHovered : ''}`} onMouseEnter={() => handleMouseEnter(4)} onMouseLeave={handleMouseLeave}><Link to="/login">Login</Link></li>
-                </ul>
+        <div className="home">
+            <nav className="navbar">
+                <div className="navbar-container">
+                    <Link to="/" className="nav-logo">
+                        LMS
+                    </Link>
+                    <ul className="nav-menu">
+                        <li className="nav-item">
+                            <Link to="/" className="nav-links"><i className="fas fa-home"></i> Home</Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link to="/about" className="nav-links"><i className="fas fa-info-circle"></i> About</Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link to="/profile" className="nav-links"><i className="fas fa-user"></i> Profile</Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link to="/courses" className="nav-links"><i className="fas fa-book"></i> Courses</Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link to="/login" className="nav-links"><i className="fas fa-sign-in-alt"></i> Login</Link>
+                        </li>
+                    </ul>
+                </div>
             </nav>
-            <Typography variant="h1" className={classes.title}>Available Courses</Typography>
-            <Grid container justify="center" spacing={4}>
-                {courses.map(course => (
-                    <Grid item key={course.id}>
-                        <Card className={classes.courseCard}>
-                            <CardContent>
-                                <Typography variant="h5" component="h5">{course.name}</Typography>
-                                <Typography color="textSecondary">Offer: {course.offer}</Typography>
-                                <Button 
-                                    component={Link} 
-                                    to={`/course/${course.id}`} 
-                                    variant="contained" 
-                                    className={classes.viewCourseBtn}
-                                >
-                                    View Course
-                                </Button>
-                            </CardContent>
-                        </Card>
-                    </Grid>
-                ))}
-            </Grid>
-        </Container>
+            <Container className={classes.root}>
+                <Typography variant="h1" className={classes.title}>Available Courses</Typography>
+                <Grid container justify="center" spacing={4}>
+                    {courses.map(course => (
+                        <Grid item key={course.id}>
+                            <Card className={classes.courseCard}>
+                                <CardContent>
+                                    <Typography variant="h5" component="h5">{course.name}</Typography>
+                                    <Typography color="textSecondary">Offer: {course.offer}</Typography>
+                                    <Button 
+                                        component={Link} 
+                                        to={`/course/${course.id}`} 
+                                        variant="contained" 
+                                        className={classes.viewCourseBtn}
+                                    >
+                                        View Course
+                                    </Button>
+                                </CardContent>
+                            </Card>
+                        </Grid>
+                    ))}
+                </Grid>
+            </Container>
+        </div>
     );
 }
 
