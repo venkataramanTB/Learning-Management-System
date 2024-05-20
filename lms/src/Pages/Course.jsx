@@ -233,46 +233,6 @@ const Course = () => {
                     </Grid>
                 </Grid>
             </Card>
-            <Paper elevation={3} className={classes.enquiryContainer}>
-                <Typography variant="h5" gutterBottom>Enquiry</Typography>
-                <TextField
-                    id="enquiry-text"
-                    label="Type your enquiry here"
-                    multiline
-                    rows={4}
-                    variant="outlined"
-                    fullWidth
-                />
-                <Button 
-                    variant="contained" 
-                    color="primary" 
-                    className={classes.purchaseButton} 
-                    onClick={() => console.log('Enquiry submitted')}
-                >
-                    Submit Enquiry
-                </Button>
-            </Paper>
-            <Paper elevation={3} className={classes.reviewContainer}>
-                <Typography variant="h5" gutterBottom>Reviews</Typography>
-                {course.reviews && course.reviews.map((review, index) => (
-                    <Card key={index} className={classes.reviewCard}>
-                        <CardContent>
-                            <Box className={classes.profileCard}>
-                                <Avatar alt={review.reviewerName} src={review.reviewerImage} className={classes.profileAvatar} />
-                                <Box className={classes.profileDetails}>
-                                    <Typography variant="subtitle1">{review.reviewerName}</Typography>
-                                    <Box className={classes.ratingContainer}>
-                                        {[...Array(review.rating)].map((_, i) => (
-                                            <i key={i} className={`fas fa-star ${classes.starIcon}`}></i>
-                                        ))}
-                                    </Box>
-                                </Box>
-                            </Box>
-                            <Typography variant="body1">{review.comment}</Typography>
-                        </CardContent>
-                    </Card>
-                ))}
-            </Paper>
         </Container>
     </div>
     );
