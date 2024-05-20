@@ -161,7 +161,7 @@ const Course = () => {
     }, [id]);
 
     const handlePurchase = () => {
-        navigate('/comingsoon'); // Navigate to the payment page
+        navigate('/comingsoon');
     };
 
     if (!course) {
@@ -188,13 +188,8 @@ const Course = () => {
                     </Grid>
                     <Grid item>
                         <Divider className={classes.divider} />
-                        <Typography variant="subtitle1">Duration: {course.Duration}</Typography>
-                        <Typography variant="subtitle1">Modules:</Typography>
-                        <Box ml={2}>
-                            {course.Modules && course.Modules.map((module, index) => (
-                                <Typography key={index} variant="body1" className={classes.module}>{module}</Typography>
-                            ))}
-                        </Box>
+                        <Typography variant="subtitle1">Category: {course.Category}</Typography>
+                        <Typography variant="subtitle1">Level: {course.Level}</Typography>
                         <Divider className={classes.divider} />
                         <Typography variant="subtitle1">Amount: {course.Price}</Typography>
                     </Grid>
