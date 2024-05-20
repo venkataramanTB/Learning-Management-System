@@ -15,6 +15,7 @@ import {
     Paper,
 } from '@material-ui/core';
 import { Link } from 'react-router-dom';
+import './Home.css';
 const useStyles = makeStyles(theme => ({
     root: {
         marginTop: theme.spacing(5),
