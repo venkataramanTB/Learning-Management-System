@@ -11,6 +11,8 @@ import Settings from './Pages/Settings'
 import Logout from './Pages/Logout'
 import Home from './Pages/Home'
 import Signup from './Pages/SignUp';
+import About from './Pages/About';
+
 
 
 function App() {
@@ -27,6 +29,7 @@ function App() {
             <Route path="/settings" element={<Settings />} />
             <Route path="/logout" element={<Logout />} />
             <Route path="/signup" element={<Signup />} />
+            <Route path="/about" element={<About />} />
             <Route path="/" element={<Home />} />
           </Routes>
         </div>
