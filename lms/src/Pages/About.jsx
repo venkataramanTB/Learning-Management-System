@@ -12,8 +12,6 @@ import {
 } from '@material-ui/core';
 import videoBackground from '../Assests/lms_about_vid.mp4'; 
 
-
-
 const useStyles = makeStyles((theme) => ({
     root: {
         textAlign: 'center',
@@ -38,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
     subtitle: {
         fontSize: '1.5rem',
         margin: '20px 0',
-        color: '#   76ABAE',
+        color: '#76ABAE',
         textDecoration: 'underline',
     },
     subtitle_key: {
@@ -140,7 +138,6 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-
 const About = () => {
     const classes = useStyles();
 
@@ -173,31 +170,32 @@ const About = () => {
                 </ul>
             </nav>
             <Container className={classes.root}>
-            <Grid item xs={12} sm={6}>
-    <Card className={classes.card}>
-        <CardContent>
-            <Typography variant="h2" className={classes.subtitle}>
-                Our Mission
-            </Typography>
-            <Typography className={classes.text}>
-                At LMS, our mission is to democratize education by providing accessible, high-quality learning opportunities for everyone, everywhere. We believe in the transformative power of education and are committed to creating a platform that supports lifelong learning and skill development.
-            </Typography>
-        </CardContent>
-    </Card>
-</Grid>
-<Grid item xs={12} sm={6}>
-    <Card className={classes.card}>
-        <CardContent>
-            <Typography variant="h2" className={classes.subtitle}>
-                Our History
-            </Typography>
-            <Typography className={classes.text}>
-                Founded in 2020, LMS was established with a vision to bridge the educational gap through innovative online learning solutions. Over the years, we have grown exponentially, expanding our course catalog and reaching learners across the globe. Our platform is designed to cater to a diverse range of educational needs, from professional development to personal enrichment.
-            </Typography>
-        </CardContent>
-    </Card>
-</Grid>
-
+                <Grid container spacing={3}>
+                    <Grid item xs={12} sm={6}>
+                        <Card className={classes.card}>
+                            <CardContent>
+                                <Typography variant="h2" className={classes.subtitle}>
+                                    Our Mission
+                                </Typography>
+                                <Typography className={classes.text}>
+                                    At LMS, our mission is to democratize education by providing accessible, high-quality learning opportunities for everyone, everywhere. We believe in the transformative power of education and are committed to creating a platform that supports lifelong learning and skill development.
+                                </Typography>
+                            </CardContent>
+                        </Card>
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
+                        <Card className={classes.card}>
+                            <CardContent>
+                                <Typography variant="h2" className={classes.subtitle}>
+                                    Our Vision
+                                </Typography>
+                                <Typography className={classes.text}>
+                                    Our vision is to become the leading online learning platform, empowering individuals to achieve their full potential through personalized, engaging, and accessible education. We strive to create a world where learning knows no boundaries and where anyone can pursue their passions and goals.
+                                </Typography>
+                            </CardContent>
+                        </Card>
+                    </Grid>
+                </Grid>
                 <Typography variant="h2" className={classes.subtitle}>Meet Our Team</Typography>
                 <Grid container spacing={4} justify="center">
                     {[
@@ -262,4 +260,3 @@ const About = () => {
 };
 
 export default About;
-
