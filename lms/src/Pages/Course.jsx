@@ -43,12 +43,15 @@ const useStyles = makeStyles(theme => ({
         },
     },
     image: {
+        marginTop: theme.spacing(2),
+        marginLeft: theme.spacing(10),
         maxWidth: '100%',
         maxHeight: 200,
         borderRadius: theme.spacing(2),
         marginBottom: theme.spacing(2),
         [theme.breakpoints.down('sm')]: {
             marginBottom: theme.spacing(3),
+            marginTop: theme.spacing(3),
         },
     },
     title: {
@@ -134,26 +137,6 @@ const Course = () => {
                     body: JSON.stringify({ courseId: id })
                 });
                 const data = await response.json();
-                data.reviews = [
-                    {
-                        reviewerName: 'John Doe',
-                        reviewerImage: 'https://via.placeholder.com/150',
-                        rating: 5,
-                        comment: 'This course provided me with a solid foundation in HTML.'
-                    },
-                    {
-                        reviewerName: 'Jane Smith',
-                        reviewerImage: 'https://via.placeholder.com/150',
-                        rating: 4,
-                        comment: 'Highly recommended! The modules are well-structured and easy to follow.'
-                    },
-                    {
-                        reviewerName: 'Alice Johnson',
-                        reviewerImage: 'https://via.placeholder.com/150',
-                        rating: 3,
-                        comment: 'Good course content. Could be more interactive.'
-                    }
-                ];
                 setCourse(data);
             } catch (error) {
                 console.error('Error fetching course details:', error);
