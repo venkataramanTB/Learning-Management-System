@@ -40,7 +40,27 @@ app.post("/user/auth/login", async (req, res) => {
     }
 });
 
+
 // Courses route with users
+// Courses route with users
+app.post('/course', async (req, res) => {
+    try {
+        const { courseId } = req.body;
+        if (isNaN(courseId)) {
+            return res.status(400).json({ error: 'Invalid courseId' });
+        }
+        const query = `SELECT * FROM course WHERE CourseID = ${courseId}`;
+        const courses = await executeQuery(query);
+        if (courses.length === 0) {
+            return res.status(404).json({ error: 'Course not found' });
+        }
+        res.json(courses[0]);
+    } catch (error) {
+        console.error('Error fetching course details:', error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+});
+
 
 
 // List of Courses
