@@ -1,15 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { Typography, Paper, Grid } from '@material-ui/core';
+import { useNavigate } from 'react-router-dom';
+import './Course.css';
 
 const Course = () => {
     const [course, setCourse] = useState(null);
     const { id } = useParams();
-
+    const navigate = useNavigate();
     useEffect(() => {
         const fetchCourse = async () => {
             try {
-                const response = await fetch(`http://localhost:5000/course/${id}`);
+                const response = await fetch(`http://localhost:5000/course`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ courseId: id })
+                });
                 const data = await response.json();
                 setCourse(data);
             } catch (error) {
@@ -17,35 +24,28 @@ const Course = () => {
             }
         };
         fetchCourse();
-    }, [id]);
+    }, []);
+
+    const handleBuyNow = () => {
+        navigate('/comingsoon'); // Navigate to the payment page
+    };
 
     if (!course) {
         return <div>Loading...</div>;
     }
 
     return (
-        <div style={{ padding: '20px' }}>
-            <Paper elevation={3} style={{ padding: '20px' }}>
-                <Typography variant="h4" gutterBottom>{course.CourseName}</Typography>
-                <Typography variant="subtitle1" gutterBottom>Instructor: {course.Instructor}</Typography>
-                <Typography variant="body1" gutterBottom>Description: {course.Description}</Typography>
-                <Grid container spacing={2}>
-                    <Grid item xs={6} sm={3}>
-                        <Typography variant="body1"><strong>Start Date:</strong> {course.StartDate}</Typography>
-                    </Grid>
-                    <Grid item xs={6} sm={3}>
-                        <Typography variant="body1"><strong>End Date:</strong> {course.EndDate}</Typography>
-                    </Grid>
-                    <Grid item xs={6} sm={3}>
-                        <Typography variant="body1"><strong>Price:</strong> {course.Price}</Typography>
-                    </Grid>
-                    <Grid item xs={6} sm={3}>
-                        <Typography variant="body1"><strong>Level:</strong> {course.Level}</Typography>
-                    </Grid>
-                </Grid>
-                <Typography variant="body1" gutterBottom><strong>Category:</strong> {course.Category}</Typography>
-                <Typography variant="body1" gutterBottom><strong>Status:</strong> {course.Status}</Typography>
-            </Paper>
+        <div className="course-container">
+            <h1 className="course-title">{course.CourseName}</h1>
+            <p className="course-info">Instructor: {course.Instructor}</p>
+            <p className="course-info">Description: {course.Description}</p>
+            <p className="course-info">Start Date: {course.StartDate}</p>
+            <p className="course-info">End Date: {course.EndDate}</p>
+            <p className="course-info">Price: {course.Price}</p>
+            <p className="course-info">Level: {course.Level}</p>
+            <p className="course-info">Category: {course.Category}</p>
+            <p className="course-info">Status: {course.Status}</p>
+            <button className="buy-now-button" onClick={handleBuyNow}>Buy Now</button>
         </div>
     );
 };

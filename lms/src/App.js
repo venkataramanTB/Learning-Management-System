@@ -12,7 +12,8 @@ import Logout from './Pages/Logout'
 import Home from './Pages/Home'
 import Signup from './Pages/SignUp';
 import About from './Pages/About';
-
+import PaymentForm from './Pages/Payment'
+import ComingSoon from './Pages/ComingSoon'
 
 
 function App() {
@@ -30,6 +31,8 @@ function App() {
             <Route path="/logout" element={<Logout />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/about" element={<About />} />
+            <Route path="/payment" element={<PaymentForm />} />
+            <Route path="/comingsoon" element={<ComingSoon />} />
             <Route path="/" element={<Home />} />
           </Routes>
         </div>

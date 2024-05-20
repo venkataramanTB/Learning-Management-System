@@ -97,8 +97,6 @@ const Courses = () => {
                                     <Typography variant="body2" color="textSecondary" component="p">
                                         Instructor: {course.Instructor}<br />
                                         Description: {course.Description}<br />
-                                        Start Date: {course.StartDate}<br />
-                                        End Date: {course.EndDate}<br />
                                         Price: {course.Price}<br />
                                         Level: {course.Level}<br />
                                         Category: {course.Category}<br />

@@ -1,0 +1,37 @@
+.course-container {
+    max-width: 600px;
+    margin: 0 auto; /* Centers the container horizontally */
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centers the content vertically */
+    align-items: center; /* Centers the content horizontally */
+}
+
+
+.course-title {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.course-info {
+    margin-bottom: 5px;
+}
+
+.buy-now-button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    margin-top: 20px; /* Add margin to separate from other content */
+}
+
+.buy-now-button:hover {
+    background-color: #0056b3;
+}
