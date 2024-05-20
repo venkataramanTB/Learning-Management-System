@@ -63,7 +63,7 @@ body, html {
   padding: 10px 20px;
   font-size: 1rem;
   color: #fff;
-  background-color: #007bff;
+  background-color: #76ABAE;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -71,5 +71,5 @@ body, html {
 }
 
 .home-button:hover {
-  background-color: #0056b3;
+  background-color: #5c8d91;
 }
