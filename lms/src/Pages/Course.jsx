@@ -14,7 +14,7 @@ import {
     TextField,
     Paper,
 } from '@material-ui/core';
-
+import { Link } from 'react-router-dom';
 const useStyles = makeStyles(theme => ({
     root: {
         marginTop: theme.spacing(5),
@@ -120,6 +120,7 @@ const Course = () => {
     const { id } = useParams();
     const navigate = useNavigate();
     const [course, setCourse] = useState(null);
+    const userData = JSON.parse(sessionStorage.getItem('loggedInUser'));
 
     useEffect(() => {
         const fetchCourse = async () => {
@@ -169,6 +170,42 @@ const Course = () => {
     }
 
     return (
+        <div className="home">
+        <nav className="navbar">
+                        <div className="navbar-container">
+                            <Link to="/" className="nav-logo">
+                                LMS
+                            </Link>
+                            <ul className="nav-menu">
+                                <li className="nav-item">
+                                    <Link to="/" className="nav-links"><i className="fas fa-home"></i> Home</Link>
+                                </li>
+                                <li className="nav-item">
+                                    <Link to="/about" className="nav-links"><i className="fas fa-info-circle"></i> About</Link>
+                                </li>
+                                <li className="nav-item">
+                                    <Link to="/profile" className="nav-links"><i className="fas fa-user"></i> Profile</Link>
+                                </li>
+                                <li className="nav-item">
+                                    <Link to="/courses" className="nav-links"><i className="fas fa-book"></i> Courses</Link>
+                                </li>
+                                {userData ? (
+                                    <li className="nav-item">
+                                        <Link to="/dash" className="nav-links"><i className="fas fa-user"></i> Dashboard</Link>
+                                    </li>
+                                ) : (
+                                    <li className="nav-item">
+                                        <Link to="/login" className="nav-links"><i className="fas fa-sign-in-alt"></i> Login</Link>
+                                    </li>
+                                )}
+                                {userData && (
+                                    <li className="nav-item">
+                                        <Link to="/logout" className="nav-links"><i className="fas fa-sign-out-alt"></i> Logout</Link>
+                                    </li>
+                                )}
+                            </ul>
+                        </div>
+                </nav>
         <Container className={classes.root}>
             <Card className={classes.card}>
                 <CardContent className={classes.content}>
@@ -236,6 +273,7 @@ const Course = () => {
                 ))}
             </Paper>
         </Container>
+    </div>
     );
 };
 
