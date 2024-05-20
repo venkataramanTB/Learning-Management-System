@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.12.4",
+    "@react-spring/web": "^9.7.3",
     "@react-three/drei": "^7.27.5",
     "@react-three/fiber": "^7.0.29",
     "@stripe/stripe-js": "^3.4.0",
@@ -11,6 +12,7 @@
     "@testing-library/react": "^12.1.5",
     "@testing-library/user-event": "^13.5.0",
     "chart.js": "^4.4.3",
+    "gsap": "^3.12.5",
     "peer": "^1.0.2",
     "react-bootstrap": "^2.10.2",
     "react-chartjs-2": "^5.2.0",
