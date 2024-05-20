@@ -1,5 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
+import { Link } from 'react-router-dom';
+import './Home.css';
 import {
     Container,
     Grid,
@@ -57,20 +59,19 @@ const useStyles = makeStyles((theme) => ({
         alignItems: 'center',
     },
     pieChart: {
-        width: '250px', // Set the desired width
-        height: '250px', // Set the desired height
+        width: '250px',
+        height: '250px', 
     },
 }));
 
 const Dash = () => {
+    const userData = JSON.parse(sessionStorage.getItem('loggedInUser')); 
     const classes = useStyles();
-    const userDetails = sessionStorage.getItem('loggedInUser');
     const user = {
-        name: 'Doe',
-        email: 'john.doe@example.com',
+        name: `${userData.FirstName}`,
+        email: `${userData.Email}`,
         avatar: 'https://via.placeholder.com/150',
     };
-    // const userData = sessionStorage.getItem('loggedInUser');
     const pieData = {
         labels: ['HTML', 'CSS', 'JavaScript', 'React', 'Node.js'],
         datasets: [
@@ -103,6 +104,42 @@ const Dash = () => {
     };
 
     return (
+        <div>
+        <nav className="navbar">
+                        <div className="navbar-container">
+                            <Link to="/" className="nav-logo">
+                                LMS
+                            </Link>
+                            <ul className="nav-menu">
+                                <li className="nav-item">
+                                    <Link to="/" className="nav-links"><i className="fas fa-home"></i> Home</Link>
+                                </li>
+                                <li className="nav-item">
+                                    <Link to="/about" className="nav-links"><i className="fas fa-info-circle"></i> About</Link>
+                                </li>
+                                <li className="nav-item">
+                                    <Link to="/profile" className="nav-links"><i className="fas fa-user"></i> Profile</Link>
+                                </li>
+                                <li className="nav-item">
+                                    <Link to="/courses" className="nav-links"><i className="fas fa-book"></i> Courses</Link>
+                                </li>
+                                {userData ? (
+                                    <li className="nav-item">
+                                        <Link to="/dash" className="nav-links"><i className="fas fa-user"></i> Dashboard</Link>
+                                    </li>
+                                ) : (
+                                    <li className="nav-item">
+                                        <Link to="/login" className="nav-links"><i className="fas fa-sign-in-alt"></i> Login</Link>
+                                    </li>
+                                )}
+                                {userData && (
+                                    <li className="nav-item">
+                                        <Link to="/logout" className="nav-links"><i className="fas fa-sign-out-alt"></i> Logout</Link>
+                                    </li>
+                                )}
+                            </ul>
+                        </div>
+                    </nav>
         <Container className={classes.root}>
             <Grid container spacing={3}>
                 <Grid item xs={12} md={4}>
@@ -140,6 +177,7 @@ const Dash = () => {
                 </Grid>
             </Grid>
         </Container>
+        </div>
     );
 };
 
