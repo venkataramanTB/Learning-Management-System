@@ -45,6 +45,7 @@ const useStyles = makeStyles({
 const Courses = () => {
     const classes = useStyles();
     const [courses, setCourses] = useState([]);
+    const userData = JSON.parse(sessionStorage.getItem('loggedInUser')); 
 
     useEffect(() => {
         const fetchCourses = async () => {
@@ -80,9 +81,11 @@ const Courses = () => {
                         <li className="nav-item">
                             <Link to="/courses" className="nav-links"><i className="fas fa-book"></i> Courses</Link>
                         </li>
-                        <li className="nav-item">
-                            <Link to="/login" className="nav-links"><i className="fas fa-sign-in-alt"></i> Login</Link>
-                        </li>
+                        {userData && (
+                                    <li className="nav-item">
+                                        <Link to="/logout" className="nav-links"><i className="fas fa-sign-out-alt"></i> Logout</Link>
+                                    </li>
+                                )}
                     </ul>
                 </div>
             </nav>

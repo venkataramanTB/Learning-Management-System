@@ -4,7 +4,7 @@ import { PacmanLoader } from 'react-spinners';
 import './Home.css';
 
 const Home = () => {
-    const userData = JSON.parse(sessionStorage.getItem('loggedInUser')); // Parse the user data
+    const userData = JSON.parse(sessionStorage.getItem('loggedInUser')); 
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {

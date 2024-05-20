@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSpring, animated } from '@react-spring/web';
 import { useNavigate } from 'react-router-dom';
-import './ComingSoon.css'; // Import the CSS file
+import './ComingSoon.css';
 
 const ComingSoon = () => {
   const fadeIn = useSpring({ opacity: 1, from: { opacity: 0 }, delay: 200 });
