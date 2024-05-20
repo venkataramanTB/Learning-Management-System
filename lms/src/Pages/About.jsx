@@ -93,11 +93,13 @@ const useStyles = makeStyles((theme) => ({
     menu: {
         listStyle: 'none',
         display: 'flex',
+        flexWrap: 'wrap', // Allow items to wrap if needed
         margin: '0',
         padding: '0',
     },
     menuItem: {
-        marginLeft: '20px',
+        marginLeft: '10px', // Reduce margin to fit more items
+        marginTop: '10px',
     },
     menuLink: {
         color: '#333',
@@ -121,7 +123,7 @@ const useStyles = makeStyles((theme) => ({
     contactSection: {
         marginTop: '40px',
         padding: '20px',
-        backgroundColor: '#f9f9f9',
+        backgroundColor: 'rgba(255, 255, 255, 0.8)',
         borderRadius: '10px',
     },
     contactItem: {
@@ -130,7 +132,7 @@ const useStyles = makeStyles((theme) => ({
     featuresSection: {
         marginTop: '40px',
         padding: '20px',
-        backgroundColor: '#e0f7fa',
+        backgroundColor: 'rgba(255, 255, 255, 0.8)',
         borderRadius: '10px',
     },
     featureItem: {
