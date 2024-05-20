@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import { 
@@ -44,27 +44,21 @@ const useStyles = makeStyles({
 
 const Courses = () => {
     const classes = useStyles();
-    const [hoveredItem, setHoveredItem] = React.useState(null);
+    const [courses, setCourses] = useState([]);
 
-    const handleMouseEnter = (index) => {
-        setHoveredItem(index);
-    };
+    useEffect(() => {
+        const fetchCourses = async () => {
+            try {
+                const response = await fetch('http://localhost:5000/courses'); // Replace with your API endpoint
+                const data = await response.json();
+                setCourses(data);
+            } catch (error) {
+                console.error('Error fetching courses:', error);
+            }
+        };
 
-    const handleMouseLeave = () => {
-        setHoveredItem(null);
-    };
-
-    const courses = [
-        { id: 1, name: 'HTML Course', offer: '50% off' },
-        { id: 2, name: 'Course 2', offer: '30% off' },
-        { id: 3, name: 'Course 3', offer: '20% off' },
-        { id: 4, name: 'Course 4', offer: '10% off' },
-        { id: 5, name: 'Course 5', offer: 'No offer' },
-        { id: 6, name: 'Course 6', offer: '40% off' },
-        { id: 7, name: 'Course 7', offer: '15% off' },
-        { id: 8, name: 'Course 8', offer: '25% off' },
-        { id: 9, name: 'Course 9', offer: '5% off' },
-    ];
+        fetchCourses();
+    }, []);
 
     return (
         <div className="home">
@@ -96,14 +90,23 @@ const Courses = () => {
                 <Typography variant="h1" className={classes.title}>Available Courses</Typography>
                 <Grid container justify="center" spacing={4}>
                     {courses.map(course => (
-                        <Grid item key={course.id}>
+                        <Grid item key={course.CourseID}>
                             <Card className={classes.courseCard}>
                                 <CardContent>
-                                    <Typography variant="h5" component="h5">{course.name}</Typography>
-                                    <Typography color="textSecondary">Offer: {course.offer}</Typography>
+                                    <Typography variant="h5" component="h5">{course.CourseName}</Typography>
+                                    <Typography variant="body2" color="textSecondary" component="p">
+                                        Instructor: {course.Instructor}<br />
+                                        Description: {course.Description}<br />
+                                        Start Date: {course.StartDate}<br />
+                                        End Date: {course.EndDate}<br />
+                                        Price: {course.Price}<br />
+                                        Level: {course.Level}<br />
+                                        Category: {course.Category}<br />
+                                        Status: {course.Status}
+                                    </Typography>
                                     <Button 
                                         component={Link} 
-                                        to={`/course/${course.id}`} 
+                                        to={`/course/${course.CourseID}`} 
                                         variant="contained" 
                                         className={classes.viewCourseBtn}
                                     >

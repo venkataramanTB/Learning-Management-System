@@ -43,7 +43,17 @@ app.post("/user/auth/login", async (req, res) => {
 // Courses route with users
 
 
-
+// List of Courses
+app.get("/courses", async (req, res) => {
+    try {
+        const query = "SELECT * FROM course WHERE Status='Active'";
+        const courses = await executeQuery(query);
+        res.status(200).json(courses);
+    } catch (error) {
+        console.error("Error fetching courses:", error);
+        res.status(500).send("Internal Server Error");
+    }
+});
 const port = process.env.PORT || 5000;
 app.listen(port, () => {
     console.log("Server has started on port " + port + ".");

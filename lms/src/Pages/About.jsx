@@ -11,6 +11,7 @@ import {
     Button 
 } from '@material-ui/core';
 import videoBackground from '../Assests/lms_about_vid.mp4'; 
+import './Home.css'; // Import Home.css for navbar styling
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -149,27 +150,29 @@ const About = () => {
                 <source src={videoBackground} type="video/mp4" />
                 Your browser does not support the video tag.
             </video>
-            <nav className={classes.nav}>
-                <Link to="/" className={classes.logo}>
-                    LMS
-                </Link>
-                <ul className={classes.menu}>
-                    <li className={classes.menuItem}>
-                        <Link to="/" className={classes.menuLink}><i className="fas fa-home"></i> Home</Link>
-                    </li>
-                    <li className={classes.menuItem}>
-                        <Link to="/about" className={classes.menuLink}><i className="fas fa-info-circle"></i> About</Link>
-                    </li>
-                    <li className={classes.menuItem}>
-                        <Link to="/profile" className={classes.menuLink}><i className="fas fa-user"></i> Profile</Link>
-                    </li>
-                    <li className={classes.menuItem}>
-                        <Link to="/courses" className={classes.menuLink}><i className="fas fa-book"></i> Courses</Link>
-                    </li>
-                    <li className={classes.menuItem}>
-                        <Link to="/login" className={classes.menuLink}><i className="fas fa-sign-in-alt"></i> Login</Link>
-                    </li>
-                </ul>
+            <nav className="navbar"> {/* Use the same class as defined in Home.css */}
+                <div className="navbar-container">
+                    <Link to="/" className="nav-logo">
+                        LMS
+                    </Link>
+                    <ul className="nav-menu">
+                        <li className="nav-item">
+                            <Link to="/" className="nav-links"><i className="fas fa-home"></i> Home</Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link to="/about" className="nav-links"><i className="fas fa-info-circle"></i> About</Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link to="/profile" className="nav-links"><i className="fas fa-user"></i> Profile</Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link to="/courses" className="nav-links"><i className="fas fa-book"></i> Courses</Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link to="/login" className="nav-links"><i className="fas fa-sign-in-alt"></i> Login</Link>
+                        </li>
+                    </ul>
+                </div>
             </nav>
             <Container className={classes.root}>
                 <Grid container spacing={3}>
