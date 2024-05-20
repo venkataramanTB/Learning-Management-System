@@ -191,7 +191,7 @@ const Course = () => {
                         <Typography variant="subtitle1">Category: {course.Category}</Typography>
                         <Typography variant="subtitle1">Level: {course.Level}</Typography>
                         <Divider className={classes.divider} />
-                        <Typography variant="subtitle1">Amount: {course.Price}</Typography>
+                        <Typography variant="subtitle1">Amount: {course.Price} Inr</Typography>
                     </Grid>
                 </Grid>
             </Card>
