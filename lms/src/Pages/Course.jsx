@@ -1,12 +1,126 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
-import './Course.css';
+import { useParams, useNavigate } from 'react-router-dom';
+import { makeStyles } from '@material-ui/core/styles';
+import { 
+    Container, 
+    Typography, 
+    Card, 
+    CardContent, 
+    Button,
+    Grid,
+    Divider,
+    Box,
+    Avatar,
+    TextField,
+    Paper,
+} from '@material-ui/core';
+
+const useStyles = makeStyles(theme => ({
+    root: {
+        marginTop: theme.spacing(5),
+    },
+    card: {
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.5)',
+        borderRadius: theme.spacing(2),
+        [theme.breakpoints.down('sm')]: {
+            flexDirection: 'column',
+        },
+    },
+    content: {
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'space-between',
+        alignItems: 'flex-start',
+        padding: theme.spacing(4),
+        minWidth: '50%',
+        [theme.breakpoints.down('sm')]: {
+            minWidth: 'auto',
+            textAlign: 'center',
+        },
+    },
+    image: {
+        maxWidth: '100%',
+        maxHeight: 200,
+        borderRadius: theme.spacing(2),
+        marginBottom: theme.spacing(2),
+        [theme.breakpoints.down('sm')]: {
+            marginBottom: theme.spacing(3),
+        },
+    },
+    title: {
+        fontSize: 28,
+        fontWeight: 'bold',
+        marginBottom: theme.spacing(2),
+    },
+    description: {
+        marginBottom: theme.spacing(2),
+    },
+    details: {
+        textAlign: 'left',
+    },
+    divider: {
+        margin: `${theme.spacing(2)}px 0`,
+    },
+    purchaseButton: {
+        marginTop: theme.spacing(2),
+        backgroundColor: '#76ABAE',
+        color: 'white',
+        padding: '12px 30px',
+        borderRadius: '5px',
+        transition: 'background-color 0.3s ease',
+        '&:hover': {
+            backgroundColor: '#5c8d91',
+        },
+    },
+    module: {
+        marginBottom: theme.spacing(1),
+    },
+    enquiryContainer: {
+        marginTop: theme.spacing(4),
+        padding: theme.spacing(2),
+        backgroundColor: '#f9f9f9',
+    },
+    reviewContainer: {
+        marginTop: theme.spacing(4),
+        padding: theme.spacing(2),
+        backgroundColor: '#f9f9f9',
+    },
+    reviewCard: {
+        marginTop: theme.spacing(2),
+        borderRadius: theme.spacing(2),
+    },
+    ratingContainer: {
+        display: 'flex',
+        alignItems: 'center',
+        marginBottom: theme.spacing(1),
+    },
+    starIcon: {
+        color: '#fdd835',
+        marginRight: theme.spacing(1),
+    },
+    profileAvatar: {
+        width: theme.spacing(7),
+        height: theme.spacing(7),
+    },
+    profileCard: {
+        display: 'flex',
+        alignItems: 'center',
+        marginBottom: theme.spacing(2),
+    },
+    profileDetails: {
+        marginLeft: theme.spacing(2),
+    },
+}));
 
 const Course = () => {
-    const [course, setCourse] = useState(null);
+    const classes = useStyles();
     const { id } = useParams();
     const navigate = useNavigate();
+    const [course, setCourse] = useState(null);
+
     useEffect(() => {
         const fetchCourse = async () => {
             try {
@@ -18,15 +132,35 @@ const Course = () => {
                     body: JSON.stringify({ courseId: id })
                 });
                 const data = await response.json();
+                data.reviews = [
+                    {
+                        reviewerName: 'John Doe',
+                        reviewerImage: 'https://via.placeholder.com/150',
+                        rating: 5,
+                        comment: 'This course provided me with a solid foundation in HTML.'
+                    },
+                    {
+                        reviewerName: 'Jane Smith',
+                        reviewerImage: 'https://via.placeholder.com/150',
+                        rating: 4,
+                        comment: 'Highly recommended! The modules are well-structured and easy to follow.'
+                    },
+                    {
+                        reviewerName: 'Alice Johnson',
+                        reviewerImage: 'https://via.placeholder.com/150',
+                        rating: 3,
+                        comment: 'Good course content. Could be more interactive.'
+                    }
+                ];
                 setCourse(data);
             } catch (error) {
                 console.error('Error fetching course details:', error);
             }
         };
         fetchCourse();
-    }, []);
+    }, [id]);
 
-    const handleBuyNow = () => {
+    const handlePurchase = () => {
         navigate('/comingsoon'); // Navigate to the payment page
     };
 
@@ -35,18 +169,78 @@ const Course = () => {
     }
 
     return (
-        <div className="course-container">
-            <h1 className="course-title">{course.CourseName}</h1>
-            <p className="course-info">Instructor: {course.Instructor}</p>
-            <p className="course-info">Description: {course.Description}</p>
-            <p className="course-info">Start Date: {course.StartDate}</p>
-            <p className="course-info">End Date: {course.EndDate}</p>
-            <p className="course-info">Price: {course.Price}</p>
-            <p className="course-info">Level: {course.Level}</p>
-            <p className="course-info">Category: {course.Category}</p>
-            <p className="course-info">Status: {course.Status}</p>
-            <button className="buy-now-button" onClick={handleBuyNow}>Buy Now</button>
-        </div>
+        <Container className={classes.root}>
+            <Card className={classes.card}>
+                <CardContent className={classes.content}>
+                    <Typography variant="h1" className={classes.title}>{course.CourseName}</Typography>
+                    <Typography variant="body1" className={classes.description}>{course.Description}</Typography>
+                    <Button 
+                        variant="contained" 
+                        className={classes.purchaseButton} 
+                        onClick={handlePurchase}
+                    >
+                        Purchase Course
+                    </Button>
+                </CardContent>
+                <Grid container direction="column" className={classes.details} justify="space-between">
+                    <Grid item>
+                        <img src={course.image || 'https://via.placeholder.com/400x200'} alt={course.CourseName} className={classes.image} />
+                    </Grid>
+                    <Grid item>
+                        <Divider className={classes.divider} />
+                        <Typography variant="subtitle1">Duration: {course.Duration}</Typography>
+                        <Typography variant="subtitle1">Modules:</Typography>
+                        <Box ml={2}>
+                            {course.Modules && course.Modules.map((module, index) => (
+                                <Typography key={index} variant="body1" className={classes.module}>{module}</Typography>
+                            ))}
+                        </Box>
+                        <Divider className={classes.divider} />
+                        <Typography variant="subtitle1">Amount: {course.Price}</Typography>
+                    </Grid>
+                </Grid>
+            </Card>
+            <Paper elevation={3} className={classes.enquiryContainer}>
+                <Typography variant="h5" gutterBottom>Enquiry</Typography>
+                <TextField
+                    id="enquiry-text"
+                    label="Type your enquiry here"
+                    multiline
+                    rows={4}
+                    variant="outlined"
+                    fullWidth
+                />
+                <Button 
+                    variant="contained" 
+                    color="primary" 
+                    className={classes.purchaseButton} 
+                    onClick={() => console.log('Enquiry submitted')}
+                >
+                    Submit Enquiry
+                </Button>
+            </Paper>
+            <Paper elevation={3} className={classes.reviewContainer}>
+                <Typography variant="h5" gutterBottom>Reviews</Typography>
+                {course.reviews && course.reviews.map((review, index) => (
+                    <Card key={index} className={classes.reviewCard}>
+                        <CardContent>
+                            <Box className={classes.profileCard}>
+                                <Avatar alt={review.reviewerName} src={review.reviewerImage} className={classes.profileAvatar} />
+                                <Box className={classes.profileDetails}>
+                                    <Typography variant="subtitle1">{review.reviewerName}</Typography>
+                                    <Box className={classes.ratingContainer}>
+                                        {[...Array(review.rating)].map((_, i) => (
+                                            <i key={i} className={`fas fa-star ${classes.starIcon}`}></i>
+                                        ))}
+                                    </Box>
+                                </Box>
+                            </Box>
+                            <Typography variant="body1">{review.comment}</Typography>
+                        </CardContent>
+                    </Card>
+                ))}
+            </Paper>
+        </Container>
     );
 };
 
