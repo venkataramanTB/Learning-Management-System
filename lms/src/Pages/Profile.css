@@ -27,12 +27,13 @@
 
 .profile h1 {
     font-size: 2.5rem;
-    color: #333;
+    color: #76ABAE;
+    border-bottom: 29px black;
 }
 
 .profile p {
     font-size: 1.2rem;
-    color: #666;
+    color: black;
     margin: 10px 0;
 }
 
@@ -53,3 +54,4 @@
 .cta-button:hover {
     background-color: #5c8d91;
 }
+

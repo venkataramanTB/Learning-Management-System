@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './Profile.css';
+import { colors } from '@material-ui/core';
 
 const Profile = () => {
     const cachedUser = sessionStorage.getItem('loggedInUser');
@@ -10,6 +11,7 @@ const Profile = () => {
             <div className="card">
                 <div className="profile">
                     <h1>Profile</h1>
+                    <hr></hr>
                     {user ? (
                         <React.Fragment>
                             <p><strong>Username:</strong> {user.Username}</p>
