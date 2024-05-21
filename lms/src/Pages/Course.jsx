@@ -65,7 +65,7 @@ const useStyles = makeStyles(theme => ({
         marginBottom: theme.spacing(2),
     },
     details: {
-        textAlign: 'left',
+        textAlign: 'center',
     },
     divider: {
         margin: `${theme.spacing(2)}px 0`,
@@ -131,7 +131,7 @@ const Course = () => {
     useEffect(() => {
         const fetchCourse = async () => {
             try {
-                const response = await fetch(`http://localhost:5000/course`, {
+                const response = await fetch(`https://lms-gox2.onrender.com/course`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -207,14 +207,14 @@ const Course = () => {
                     </CardContent>
                     <Grid container direction="column" className={classes.details} justify="space-between">
                         <Grid item>
-                            <img src={course.image || 'https://via.placeholder.com/400x200'} alt={course.CourseName} className={classes.image} />
+                            <img src={course.image || 'https://i.pinimg.com/564x/70/33/f8/7033f88628ad9cb4044a6cc39e36792e.jpg'} alt={course.CourseName} className={classes.image} />
                         </Grid>
                         <Grid item>
                             <Divider className={classes.divider} />
                             <Typography variant="subtitle1">Category: {course.Category}</Typography>
                             <Typography variant="subtitle1">Level: {course.Level}</Typography>
+                            <Typography variant="subtitle1">Amount: {course.Price} Inr </Typography>
                             <Divider className={classes.divider} />
-                            <Typography variant="subtitle1">Amount: {course.Price} Inr</Typography>
                         </Grid>
                     </Grid>
                 </Card>
