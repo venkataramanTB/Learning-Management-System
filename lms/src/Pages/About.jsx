@@ -16,7 +16,7 @@ import './Home.css'; // Import Home.css for navbar styling
 const useStyles = makeStyles((theme) => ({
     root: {
         textAlign: 'center',
-        marginTop: '100px',
+        marginTop: '80px',
         padding: '20px',
         maxWidth: '1000px',
         margin: 'auto',
@@ -43,7 +43,7 @@ const useStyles = makeStyles((theme) => ({
     subtitle_key: {
         fontSize: '1.5rem',
         margin: '20px 0',
-        color: 'black',
+        color: '#76ABAE',
         textDecoration: 'underline',
     },
     text: {
@@ -138,6 +138,9 @@ const useStyles = makeStyles((theme) => ({
     },
     featureItem: {
         margin: '10px 0',
+    },
+    m: {
+        color: 'white',
     },
 }));
 
@@ -234,11 +237,13 @@ const About = () => {
                     <Typography variant="h2" className={classes.subtitle_key}>
                     Key Features
                     </Typography>
-                    <Typography className={classes.featureItem}><strong>Interactive Courses:</strong> Our courses are designed to be engaging and interactive, with a mix of videos, quizzes, and assignments.</Typography>
-                    <Typography className={classes.featureItem}><strong>Expert Instructors:</strong> Learn from industry experts who bring real-world experience to the virtual classroom.</Typography>
-                    <Typography className={classes.featureItem}><strong>Flexible Learning:</strong> Access courses anytime, anywhere, and learn at your own pace.</Typography>
-                    <Typography className={classes.featureItem}><strong>Community Support:</strong> Join a vibrant community of learners and get support from peers and instructors.</Typography>
-                    <Typography className={classes.featureItem}><strong>Certifications:</strong> Earn certificates of completion to showcase your new skills and knowledge.</Typography>
+                    <div className='m'>
+                        <Typography className={classes.featureItem}><strong>Interactive Courses:</strong> Our courses are designed to be engaging and interactive, with a mix of videos, quizzes, and assignments.</Typography>
+                        <Typography className={classes.featureItem}><strong>Expert Instructors:</strong> Learn from industry experts who bring real-world experience to the virtual classroom.</Typography>
+                        <Typography className={classes.featureItem}><strong>Flexible Learning:</strong> Access courses anytime, anywhere, and learn at your own pace.</Typography>
+                        <Typography className={classes.featureItem}><strong>Community Support:</strong> Join a vibrant community of learners and get support from peers and instructors.</Typography>
+                        <Typography className={classes.featureItem}><strong>Certifications:</strong> Earn certificates of completion to showcase your new skills and knowledge.</Typography>
+                    </div>
                 </div>
                 <div className={classes.contactSection}>
                     <Typography variant="h2" className={classes.subtitle_key}>Contact Us</Typography>

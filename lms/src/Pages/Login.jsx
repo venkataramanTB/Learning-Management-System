@@ -23,17 +23,21 @@ const theme = createTheme({
 });
 
 const useStyles = makeStyles({
+    body:{
+        height: '100vh',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
     card: {
-        width: '800px',
+        width: '500px',
         padding: '50px',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-        margin: 'auto',
-        marginTop: '150px',
         boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.5)',
-        background:'#EEEEEE',
+        backgroundColor: 'rgba(255, 255, 255, 0.8)',
     },
     input: {
         marginBottom: '20px',
@@ -46,15 +50,14 @@ const useStyles = makeStyles({
         color: '#ffffff',
         background: '#76ABAE'
     },
-    h1:{
-        textAlign: 'left',
-        color: '#93B1A6',
-    },
     loaderContainer: {
         display: 'flex',
         justifyContent: 'center',
         marginTop: '20px',
-    },  
+    },
+    h4:{
+        paddingBottom:'20px',
+    }, 
 });
 
 function Login() {
@@ -111,6 +114,7 @@ function Login() {
             <div className={classes.body}>
                 <Card className={classes.card}>
                     <Typography variant="h4" align="center" className={classes.title}>Login</Typography>
+                    <br></br>
                     <form onSubmit={handleLogin}>
                         <TextField 
                             label="Username" 

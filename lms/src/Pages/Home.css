@@ -2,12 +2,18 @@ body {
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    background: #f5f5f5;
+    background-image: url("C:\project\lms\pg.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .home {
     text-align: center;
-    padding: 50px 20px;
+    padding: 100px 20px;
+}
+h1 {
+    text-size-adjust: 100px;
 }
 
 .navbar {
@@ -65,7 +71,7 @@ body {
     max-width: 800px;
     margin: 120px auto 0 auto;
     padding: 20px;
-    background: #ffffff;
+    background: rgba(255, 255, 255, 0.8);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
 }

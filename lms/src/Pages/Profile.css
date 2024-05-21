@@ -6,18 +6,23 @@
     justify-content: center;
     font-family: Arial, sans-serif;
 }
+.root{
+    height: 100vh;
+    display: flex;
+    justify-Content: center;
+    align-Items: center;
+}
 
 .card {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.8);
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin: 120px auto;
-    max-width: 800px;
+    width: 500px;
 }
 
 .profile h1 {
