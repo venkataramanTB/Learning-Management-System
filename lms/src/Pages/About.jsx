@@ -13,23 +13,28 @@ import {
 import videoBackground from '../Assests/lms_about_vid.mp4'; 
 
 const useStyles = makeStyles((theme) => ({
-    About:{
+    About: {
         position: 'relative',
         overflow: 'hidden',
+        backgroundColor: '#f0f0f0', // Light background color for the entire page
+        paddingTop: '80px', // Added padding to account for the fixed navbar
     },
     root: {
         textAlign: 'center',
-        marginTop: '100px',
+        marginTop: '50px',
         padding: '20px',
         maxWidth: '1000px',
         margin: 'auto',
+        backgroundColor: '#ffffff', // Solid white background for main container
+        borderRadius: '10px',
+        boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.1)',
     },
     video: {
         position: 'fixed',
         width: '100%',
         height: '100%',
         objectFit: 'cover',
-        zIndex: '-1', 
+        zIndex: '-1',
     },
     title: {
         fontSize: '2.5rem',
@@ -46,20 +51,19 @@ const useStyles = makeStyles((theme) => ({
     subtitle_key: {
         fontSize: '1.5rem',
         margin: '20px 0',
-        color: 'black',
+        color: '#333',
         textDecoration: 'underline',
     },
     text: {
         fontSize: '1.2rem',
-        color: 'black',
+        color: '#333',
         margin: '10px 0',
     },
     card: {
-        maxWidth: 345,
         margin: '20px auto',
         padding: '20px',
-        backgroundColor: 'rgba(255, 255, 255, 0.8)', // Set background color with transparency
-        boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.2)', // Add shadow for depth effect
+        backgroundColor: '#ffffff', // Solid white background for cards
+        boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.1)',
     },
     media: {
         height: 200,
@@ -97,13 +101,11 @@ const useStyles = makeStyles((theme) => ({
     menu: {
         listStyle: 'none',
         display: 'flex',
-        flexWrap: 'wrap', // Allow items to wrap if needed
         margin: '0',
         padding: '0',
     },
     menuItem: {
-        marginLeft: '10px', // Reduce margin to fit more items
-        marginTop: '10px',
+        marginLeft: '20px',
     },
     menuLink: {
         color: '#333',
@@ -127,27 +129,25 @@ const useStyles = makeStyles((theme) => ({
     contactSection: {
         marginTop: '40px',
         padding: '20px',
-        backgroundColor: 'rgba(255, 255, 255, 0.8)',
+        backgroundColor: '#ffffff', // Solid white background for contact section
         borderRadius: '10px',
+        boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.1)',
     },
     contactItem: {
         margin: '10px 0',
+        color: '#333',
     },
     featuresSection: {
         marginTop: '40px',
         padding: '20px',
-        backgroundColor: 'rgba(255, 255, 255, 0.8)',
+        backgroundColor: '#ffffff', // Solid white background for features section
         borderRadius: '10px',
+        boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.1)',
     },
     featureItem: {
         margin: '10px 0',
+        color: '#333',
     },
-    sectionWithBackground: {
-        backgroundColor: 'rgba(255, 255, 255, 0.8)', // Background color for specific sections
-        padding: '20px',
-        borderRadius: '10px',
-        marginBottom: '40px', // Added margin to separate sections
-    }
 }));
 
 const About = () => {
@@ -182,7 +182,7 @@ const About = () => {
                 </ul>
             </nav>
             <Container className={classes.root}>
-                <div className={classes.sectionWithBackground}>
+                <div>
                     <Grid container spacing={3}>
                         <Grid item xs={12} sm={6}>
                             <Card className={classes.card}>
@@ -214,7 +214,7 @@ const About = () => {
                 <Grid container spacing={4} justifyContent="center">
                     {[
                         { id: 1, name: 'Venkataraman', role: 'CEO', image: 'https://via.placeholder.com/150?text=Venkataraman', description: 'John is the visionary behind LMS, with a passion for education and technology.' },
-                        { id: 2, name: 'Saranya Devi', role: 'CTO', image: 'https://via.placeholder.com/150?text=Saranya+Devi', description: 'Jane leads our tech team, ensuring our platform is robust and user-friendly.' },
+                        { id: 2, name: 'Sara', role: 'CTO', image: 'https://via.placeholder.com/150?text=Saranya+Devi', description: 'Jane leads our tech team, ensuring our platform is robust and user-friendly.' },
                         { id: 3, name: 'Yashwanth', role: 'COO', image: 'https://via.placeholder.com/150?text=Yashwanth', description: 'Robert oversees operations, making sure everything runs smoothly and efficiently.' },
                     ].map((member) => (
                         <Grid item xs={12} sm={4} md={4} key={member.id}>
@@ -241,7 +241,7 @@ const About = () => {
                 </Grid>
                 <div className={classes.featuresSection}>
                     <Typography variant="h2" className={classes.subtitle_key}>
-                    Key Features
+                        Key Features
                     </Typography>
                     <Typography className={classes.featureItem}><strong>Interactive Courses:</strong> Our courses are designed to be engaging and interactive, with a mix of videos, quizzes, and assignments.</Typography>
                     <Typography className={classes.featureItem}><strong>Expert Instructors:</strong> Learn from industry experts who bring real-world experience to the virtual classroom.</Typography>
@@ -274,3 +274,4 @@ const About = () => {
 };
 
 export default About;
+
