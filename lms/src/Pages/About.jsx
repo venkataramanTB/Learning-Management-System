@@ -213,9 +213,9 @@ const About = () => {
                 <Typography variant="h2" className={classes.subtitle}>Meet the Team</Typography>
                 <Grid container spacing={4} justifyContent="center">
                     {[
-                        { id: 1, name: 'Venkataraman', role: 'CEO', image: 'https://via.placeholder.com/150?text=Venkataraman', description: 'John is the visionary behind LMS, with a passion for education and technology.' },
-                        { id: 2, name: 'Sara', role: 'CTO', image: 'https://via.placeholder.com/150?text=Saranya+Devi', description: 'Jane leads our tech team, ensuring our platform is robust and user-friendly.' },
-                        { id: 3, name: 'Yashwanth', role: 'COO', image: 'https://via.placeholder.com/150?text=Yashwanth', description: 'Robert oversees operations, making sure everything runs smoothly and efficiently.' },
+                        { id: 1, name: 'Venky', role: 'CEO', image: 'https://via.placeholder.com/150?text=Venky', description: 'Venky is the visionary behind LMS, with a passion for education and technology.' },
+                        { id: 2, name: 'Sara', role: 'CTO', image: 'https://via.placeholder.com/150?text=Sara', description: 'Sara leads our tech team, ensuring our platform is robust and user-friendly.' },
+                        { id: 3, name: 'Yash', role: 'COO', image: 'https://via.placeholder.com/150?text=Yash', description: 'Yash oversees operations, making sure everything runs smoothly and efficiently.' },
                     ].map((member) => (
                         <Grid item xs={12} sm={4} md={4} key={member.id}>
                             <Card className={classes.card}>
@@ -274,4 +274,3 @@ const About = () => {
 };
 
 export default About;
-
