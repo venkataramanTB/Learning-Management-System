@@ -51,7 +51,7 @@ const useStyles = makeStyles((theme) => ({
     subtitle_key: {
         fontSize: '1.5rem',
         margin: '20px 0',
-        color: '#333',
+        color: '#76ABAE',
         textDecoration: 'underline',
     },
     text: {

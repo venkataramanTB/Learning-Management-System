@@ -7,12 +7,15 @@ import {
     Grid, 
     Card, 
     CardContent, 
-    Button 
+    Button, 
+    TextField, 
+    InputAdornment 
 } from '@material-ui/core';
+import { Search as SearchIcon } from '@material-ui/icons';
 import { ClipLoader } from 'react-spinners'; 
 import './Home.css';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
     root: {
         textAlign: 'center',
         marginTop: '50px',
@@ -46,12 +49,20 @@ const useStyles = makeStyles({
         justifyContent: 'center',
         marginTop: '50px',
     },
-});
+    searchBar: {
+        margin: '20px 0',
+        width: '10%', // Adjust the width to make it thinner
+        [theme.breakpoints.up('sm')]: {
+            width: '50%', // Adjust the width to make it thinner
+        },
+    },
+}));
 
 const Courses = () => {
     const classes = useStyles();
     const [courses, setCourses] = useState([]);
     const [loading, setLoading] = useState(true); 
+    const [searchQuery, setSearchQuery] = useState('');
     const userData = JSON.parse(sessionStorage.getItem('loggedInUser')); 
 
     useEffect(() => {
@@ -69,6 +80,14 @@ const Courses = () => {
 
         fetchCourses();
     }, []);
+
+    const handleSearchChange = (event) => {
+        setSearchQuery(event.target.value);
+    };
+
+    const filteredCourses = courses.filter(course =>
+        course.CourseName.toLowerCase().includes(searchQuery.toLowerCase())
+    );
 
     return (
         <div className="home">
@@ -100,13 +119,27 @@ const Courses = () => {
             </nav>
             <Container className={classes.root}>
                 <Typography variant="h1" className={classes.title}>Available Courses</Typography>
+                <TextField 
+                    className={classes.searchBar}
+                    label="Search Courses"
+                    variant="outlined"
+                    value={searchQuery}
+                    onChange={handleSearchChange}
+                    InputProps={{
+                        endAdornment: (
+                            <InputAdornment position="end">
+                                <SearchIcon />
+                            </InputAdornment>
+                        ),
+                    }}
+                />
                 {loading ? (
                     <div className={classes.spinner}>
                         <ClipLoader size={50} color={"#76ABAE"} loading={loading} />
                     </div>
                 ) : (
                     <Grid container justify="center" spacing={4}>
-                        {courses.map(course => (
+                        {filteredCourses.map(course => (
                             <Grid item key={course.CourseID}>
                                 <Card className={classes.courseCard}>
                                     <CardContent>

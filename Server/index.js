@@ -40,9 +40,6 @@ app.post("/user/auth/login", async (req, res) => {
     }
 });
 
-
-// Courses route with users
-// Courses route with users
 app.post('/course', async (req, res) => {
     try {
         const { courseId } = req.body;
@@ -61,9 +58,6 @@ app.post('/course', async (req, res) => {
     }
 });
 
-
-
-// List of Courses
 app.get("/courses", async (req, res) => {
     try {
         const query = "SELECT * FROM course WHERE Status='Active'";
