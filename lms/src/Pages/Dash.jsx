@@ -60,12 +60,16 @@ const useStyles = makeStyles((theme) => ({
     },
     pieChart: {
         width: '250px',
-        height: '250px', 
+        height: '250px',
+    },
+    barChart: {
+        width: '1000px', // Adjust this value to control the bar chart size
+        maxWidth: '100%', // Ensure it doesn't exceed the container's width
     },
 }));
 
 const Dash = () => {
-    const userData = JSON.parse(sessionStorage.getItem('loggedInUser')); 
+    const userData = JSON.parse(sessionStorage.getItem('loggedInUser'));
     const classes = useStyles();
     const user = {
         name: `${userData.FirstName}`,
@@ -83,11 +87,14 @@ const Dash = () => {
     };
 
     const barData = {
-        labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+        labels: [
+            'January', 'February', 'March', 'April', 'May', 'June',
+            'July', 'August', 'September', 'October', 'November', 'December'
+        ],
         datasets: [
             {
                 label: 'Performance',
-                data: [65, 59, 80, 81, 56, 55],
+                data: [65, 59, 80, 81, 56, 55, 70, 75, 60, 90, 85, 95],
                 backgroundColor: 'rgba(75,192,192,0.4)',
                 borderColor: 'rgba(75,192,192,1)',
                 borderWidth: 1,
@@ -140,43 +147,47 @@ const Dash = () => {
                     </ul>
                 </div>
             </nav>
-        <Container className={classes.root}>
-            <Grid container spacing={3}>
-                <Grid item xs={12} md={4}>
-                    <Card className={classes.card}>
-                        <CardContent className={classes.profileSection}>
-                            <Avatar alt={user.name} src={user.avatar} className={classes.largeAvatar} />
-                            <Typography variant="h6">{user.name}</Typography>
-                            <Typography color="textSecondary">{user.email}</Typography>
-                        </CardContent>
-                    </Card>
+            <Container className={classes.root}>
+                <Grid container spacing={3}>
+                    <Grid item xs={12} md={4}>
+                        <Card className={classes.card}>
+                            <CardContent className={classes.profileSection}>
+                                <Avatar alt={user.name} src={user.avatar} className={classes.largeAvatar} />
+                                <Typography variant="h6">{user.name}</Typography>
+                                <Typography color="textSecondary">{user.email}</Typography>
+                            </CardContent>
+                        </Card>
+                    </Grid>
+                    <Grid item xs={12} md={8}>
+                        <Card className={classes.card}>
+                            <CardContent>
+                                <Typography variant="h6" gutterBottom>
+                                    Courses Enrolled
+                                </Typography>
+                                <Box className={classes.chartContainer}>
+                                    <div className={classes.pieChart}>
+                                        <Pie data={pieData} />
+                                    </div>
+                                </Box>
+                            </CardContent>
+                        </Card>
+                    </Grid>
+                    <Grid item xs={12}>
+                        <Card className={classes.card}>
+                            <CardContent>
+                                <Typography variant="h6" gutterBottom>
+                                    Performance Over Months
+                                </Typography>
+                                <Box className={classes.chartContainer}>
+                                    <div className={classes.barChart}>
+                                        <Bar data={barData} options={barOptions} />
+                                    </div>
+                                </Box>
+                            </CardContent>
+                        </Card>
+                    </Grid>
                 </Grid>
-                <Grid item xs={12} md={8}>
-                    <Card className={classes.card}>
-                        <CardContent>
-                            <Typography variant="h6" gutterBottom>
-                                Courses Enrolled
-                            </Typography>
-                            <Box className={classes.chartContainer}>
-                                <div className={classes.pieChart}>
-                                    <Pie data={pieData} />
-                                </div>
-                            </Box>
-                        </CardContent>
-                    </Card>
-                    <Card className={classes.card}>
-                        <CardContent>
-                            <Typography variant="h6" gutterBottom>
-                                Performance Over Months
-                            </Typography>
-                            <Box>
-                                <Bar data={barData} options={barOptions} />
-                            </Box>
-                        </CardContent>
-                    </Card>
-                </Grid>
-            </Grid>
-        </Container>
+            </Container>
         </div>
     );
 };
