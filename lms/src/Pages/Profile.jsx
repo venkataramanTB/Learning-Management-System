@@ -1,8 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './Profile.css';
-import { colors } from '@material-ui/core';
-
 const Profile = () => {
     const cachedUser = sessionStorage.getItem('loggedInUser');
     const user = cachedUser ? JSON.parse(cachedUser) : null;

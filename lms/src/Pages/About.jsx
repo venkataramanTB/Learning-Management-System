@@ -11,22 +11,30 @@ import {
     Button 
 } from '@material-ui/core';
 import videoBackground from '../Assests/lms_about_vid.mp4'; 
-import './Home.css'; // Import Home.css for navbar styling
 
 const useStyles = makeStyles((theme) => ({
+    About: {
+        position: 'relative',
+        overflow: 'hidden',
+        backgroundColor: '#f0f0f0', // Light background color for the entire page
+        paddingTop: '80px', // Added padding to account for the fixed navbar
+    },
     root: {
         textAlign: 'center',
-        marginTop: '80px',
+        marginTop: '100px',
         padding: '20px',
         maxWidth: '1000px',
         margin: 'auto',
+        backgroundColor: '#ffffff', // Solid white background for main container
+        borderRadius: '10px',
+        boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.1)',
     },
     video: {
         position: 'fixed',
         width: '100%',
         height: '100%',
         objectFit: 'cover',
-        zIndex: '-1', // Ensure the video stays behind other content
+        zIndex: '-1',
     },
     title: {
         fontSize: '2.5rem',
@@ -43,20 +51,19 @@ const useStyles = makeStyles((theme) => ({
     subtitle_key: {
         fontSize: '1.5rem',
         margin: '20px 0',
-        color: '#76ABAE',
+        color: 'black',
         textDecoration: 'underline',
     },
     text: {
         fontSize: '1.2rem',
-        color: 'black',
+        color: '#333',
         margin: '10px 0',
     },
     card: {
-        maxWidth: 345,
         margin: '20px auto',
         padding: '20px',
-        backgroundColor: 'rgba(255, 255, 255, 0.8)', // Set background color with transparency
-        boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.2)', // Add shadow for depth effect
+        backgroundColor: '#ffffff', // Solid white background for cards
+        boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.1)',
     },
     media: {
         height: 200,
@@ -94,13 +101,11 @@ const useStyles = makeStyles((theme) => ({
     menu: {
         listStyle: 'none',
         display: 'flex',
-        flexWrap: 'wrap', // Allow items to wrap if needed
         margin: '0',
         padding: '0',
     },
     menuItem: {
-        marginLeft: '10px', // Reduce margin to fit more items
-        marginTop: '10px',
+        marginLeft: '20px',
     },
     menuLink: {
         color: '#333',
@@ -124,20 +129,24 @@ const useStyles = makeStyles((theme) => ({
     contactSection: {
         marginTop: '40px',
         padding: '20px',
-        backgroundColor: 'rgba(255, 255, 255, 0.8)',
+        backgroundColor: '#ffffff', // Solid white background for contact section
         borderRadius: '10px',
+        boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.1)',
     },
     contactItem: {
         margin: '10px 0',
+        color: '#333',
     },
     featuresSection: {
         marginTop: '40px',
         padding: '20px',
-        backgroundColor: 'rgba(255, 255, 255, 0.8)',
+        backgroundColor: '#ffffff', // Solid white background for features section
         borderRadius: '10px',
+        boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.1)',
     },
     featureItem: {
         margin: '10px 0',
+        color: '#333',
     },
     m: {
         color: 'white',
@@ -148,70 +157,70 @@ const About = () => {
     const classes = useStyles();
 
     return (
-        <div>
+        <div className={classes.About}>
             <video autoPlay loop muted className={classes.video}>
                 <source src={videoBackground} type="video/mp4" />
                 Your browser does not support the video tag.
             </video>
-            <nav className="navbar"> {/* Use the same class as defined in Home.css */}
-                <div className="navbar-container">
-                    <Link to="/" className="nav-logo">
-                        LMS
-                    </Link>
-                    <ul className="nav-menu">
-                        <li className="nav-item">
-                            <Link to="/" className="nav-links"><i className="fas fa-home"></i> Home</Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link to="/about" className="nav-links"><i className="fas fa-info-circle"></i> About</Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link to="/profile" className="nav-links"><i className="fas fa-user"></i> Profile</Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link to="/courses" className="nav-links"><i className="fas fa-book"></i> Courses</Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link to="/login" className="nav-links"><i className="fas fa-sign-in-alt"></i> Login</Link>
-                        </li>
-                    </ul>
-                </div>
+            <nav className={classes.nav}>
+                <Link to="/" className={classes.logo}>
+                    LMS
+                </Link>
+                <ul className={classes.menu}>
+                    <li className={classes.menuItem}>
+                        <Link to="/" className={classes.menuLink}><i className="fas fa-home"></i> Home</Link>
+                    </li>
+                    <li className={classes.menuItem}>
+                        <Link to="/about" className={classes.menuLink}><i className="fas fa-info-circle"></i> About</Link>
+                    </li>
+                    <li className={classes.menuItem}>
+                        <Link to="/profile" className={classes.menuLink}><i className="fas fa-user"></i> Profile</Link>
+                    </li>
+                    <li className={classes.menuItem}>
+                        <Link to="/courses" className={classes.menuLink}><i className="fas fa-book"></i> Courses</Link>
+                    </li>
+                    <li className={classes.menuItem}>
+                        <Link to="/login" className={classes.menuLink}><i className="fas fa-sign-in-alt"></i> Login</Link>
+                    </li>
+                </ul>
             </nav>
             <Container className={classes.root}>
-                <Grid container spacing={3}>
-                    <Grid item xs={12} sm={6}>
-                        <Card className={classes.card}>
-                            <CardContent>
-                                <Typography variant="h2" className={classes.subtitle}>
-                                    Our Mission
-                                </Typography>
-                                <Typography className={classes.text}>
-                                    At LMS, our mission is to democratize education by providing accessible, high-quality learning opportunities for everyone, everywhere. We believe in the transformative power of education and are committed to creating a platform that supports lifelong learning and skill development.
-                                </Typography>
-                            </CardContent>
-                        </Card>
+                <div>
+                    <Grid container spacing={3}>
+                        <Grid item xs={12} sm={6}>
+                            <Card className={classes.card}>
+                                <CardContent>
+                                    <Typography variant="h2" className={classes.subtitle}>
+                                        The Mission
+                                    </Typography>
+                                    <Typography className={classes.text}>
+                                        At LMS, the mission is to democratize education by providing accessible, high-quality learning opportunities for everyone, everywhere. We believe in the transformative power of education and are committed to creating a platform that supports lifelong learning and skill development.
+                                    </Typography>
+                                </CardContent>
+                            </Card>
+                        </Grid>
+                        <Grid item xs={12} sm={6}>
+                            <Card className={classes.card}>
+                                <CardContent>
+                                    <Typography variant="h2" className={classes.subtitle}>
+                                        The Vision
+                                    </Typography>
+                                    <Typography className={classes.text}>
+                                        The vision is to become the leading online learning platform, empowering individuals to achieve their full potential through personalized, engaging, and accessible education. We strive to create a world where learning knows no boundaries and where anyone can pursue their passions and goals.
+                                    </Typography>
+                                </CardContent>
+                            </Card>
+                        </Grid>
                     </Grid>
-                    <Grid item xs={12} sm={6}>
-                        <Card className={classes.card}>
-                            <CardContent>
-                                <Typography variant="h2" className={classes.subtitle}>
-                                    Our Vision
-                                </Typography>
-                                <Typography className={classes.text}>
-                                    Our vision is to become the leading online learning platform, empowering individuals to achieve their full potential through personalized, engaging, and accessible education. We strive to create a world where learning knows no boundaries and where anyone can pursue their passions and goals.
-                                </Typography>
-                            </CardContent>
-                        </Card>
-                    </Grid>
-                </Grid>
-                <Typography variant="h2" className={classes.subtitle}>Meet Our Team</Typography>
-                <Grid container spacing={4} justify="center">
+                </div>
+                <Typography variant="h2" className={classes.subtitle}>Meet the Team</Typography>
+                <Grid container spacing={4} justifyContent="center">
                     {[
-                        { id: 1, name: 'John Doe', role: 'CEO', image: 'https://via.placeholder.com/150?text=John+Doe', description: 'John is the visionary behind LMS, with a passion for education and technology.' },
-                        { id: 2, name: 'Jane Smith', role: 'CTO', image: 'https://via.placeholder.com/150?text=Jane+Smith', description: 'Jane leads our tech team, ensuring our platform is robust and user-friendly.' },
-                        { id: 3, name: 'Robert Brown', role: 'COO', image: 'https://via.placeholder.com/150?text=Robert+Brown', description: 'Robert oversees operations, making sure everything runs smoothly and efficiently.' },
+                        { id: 1, name: 'Venky', role: 'CEO', image: 'https://via.placeholder.com/150?text=Venky', description: 'Venky is the visionary behind LMS, with a passion for education and technology.' },
+                        { id: 2, name: 'Sara', role: 'CTO', image: 'https://via.placeholder.com/150?text=Sara', description: 'Sara leads our tech team, ensuring our platform is robust and user-friendly.' },
+                        { id: 3, name: 'Yash', role: 'COO', image: 'https://via.placeholder.com/150?text=Yash', description: 'Yash oversees operations, making sure everything runs smoothly and efficiently.' },
                     ].map((member) => (
-                        <Grid item key={member.id}>
+                        <Grid item xs={12} sm={4} md={4} key={member.id}>
                             <Card className={classes.card}>
                                 <CardMedia
                                     className={classes.media}
@@ -235,7 +244,7 @@ const About = () => {
                 </Grid>
                 <div className={classes.featuresSection}>
                     <Typography variant="h2" className={classes.subtitle_key}>
-                    Key Features
+                        Key Features
                     </Typography>
                     <div className='m'>
                         <Typography className={classes.featureItem}><strong>Interactive Courses:</strong> Our courses are designed to be engaging and interactive, with a mix of videos, quizzes, and assignments.</Typography>
