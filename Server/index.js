@@ -1,17 +1,22 @@
+require('dotenv').config(); // Load environment variables from .env file
+
 const express = require("express");
-const app = express();
 const cors = require("cors");
 const { executeQuery } = require("./db");
-require("dotenv").config();
+const { getGitHubContributions } = require('./scrapeContributions');
+
+const app = express();
+const PORT = process.env.PORT || 5000;
 
 app.use(cors());
 app.use(express.json());
+app.use(express.static('build'));
 
 // Signup route
 app.post("/users/signup", async (req, res) => {
     try {
-        const { username, email, password,firstName, lastName, age, gender} = req.body;
-        const query = `INSERT INTO users (Username, Email, Password, FirstName, LastName, Age, Gender) VALUES ('${username}', '${email}', '${password}','${firstName}','${lastName}', '${age}', '${gender}')`;
+        const { username, email, password, firstName, lastName, age, gender, githubProfileId } = req.body;
+        const query = `INSERT INTO users (Username, Email, Password, FirstName, LastName, Age, Gender, githubProfileId) VALUES ('${username}', '${email}', '${password}', '${firstName}', '${lastName}', '${age}', '${gender}', '${githubProfileId}')`;
         await executeQuery(query);
         res.status(200).send("User created successfully");
     } catch (err) {
@@ -24,10 +29,9 @@ app.post("/users/signup", async (req, res) => {
 app.post("/user/auth/login", async (req, res) => {
     try {
         const { username, password } = req.body;
-        const query = `SELECT * FROM users WHERE Username='${username}' AND password='${password}'`;
+        const query = `SELECT * FROM users WHERE Username='${username}' AND Password='${password}'`;
         const result = await executeQuery(query);
         if (result.length > 0) {
-            // Assuming `result` contains user data
             const userData = result[0];
             console.log(`Logged in as ${username}`);
             res.status(200).json(userData); // Return user data as JSON
@@ -40,6 +44,7 @@ app.post("/user/auth/login", async (req, res) => {
     }
 });
 
+// Courses route with users
 app.post('/course', async (req, res) => {
     try {
         const { courseId } = req.body;
@@ -58,6 +63,7 @@ app.post('/course', async (req, res) => {
     }
 });
 
+// List of Courses
 app.get("/courses", async (req, res) => {
     try {
         const query = "SELECT * FROM course WHERE Status='Active'";
@@ -68,7 +74,23 @@ app.get("/courses", async (req, res) => {
         res.status(500).send("Internal Server Error");
     }
 });
-const port = process.env.PORT || 5000;
-app.listen(port, () => {
-    console.log("Server has started on port " + port + ".");
+
+// GitHub Contributions route (accepts payload)
+app.post('/api/contributions', async (req, res) => {
+    const { username } = req.body;
+    if (!username) {
+        return res.status(400).json({ error: 'Username is required' });
+    }
+
+    try {
+        const contributions = await getGitHubContributions(username);
+        res.json(contributions);
+    } catch (err) {
+        console.error('Error fetching GitHub contributions:', err);
+        res.status(500).send("Internal Server Error");
+    }
+});
+
+app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
 });
