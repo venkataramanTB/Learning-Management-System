@@ -24,7 +24,8 @@ const Home = () => {
                     <nav className="navbar">
                         <div className="navbar-container">
                             <Link to="/" className="nav-logo">
-                                LMS
+                            <img src="https://ik.imagekit.io/yash13/EM.jpg?updatedAt=1716522375492" alt="EduMatrix Logo" className="nav-logo-img" /> 
+                                EduMatrix
                             </Link>
                             <ul className="nav-menu">
                                 <li className="nav-item">
@@ -32,9 +33,6 @@ const Home = () => {
                                 </li>
                                 <li className="nav-item">
                                     <Link to="/about" className="nav-links"><i className="fas fa-info-circle"></i> About</Link>
-                                </li>
-                                <li className="nav-item">
-                                    <Link to="/profile" className="nav-links"><i className="fas fa-user"></i> Profile</Link>
                                 </li>
                                 <li className="nav-item">
                                     <Link to="/courses" className="nav-links"><i className="fas fa-book"></i> Courses</Link>
@@ -65,6 +63,7 @@ const Home = () => {
                         ) : (
                             <Link to="/login" className="cta-button">Get Started</Link>
                         )}
+                        
                     </div>
                 </>
             )}
