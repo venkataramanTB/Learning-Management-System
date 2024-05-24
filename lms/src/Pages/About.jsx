@@ -274,8 +274,7 @@ const About = () => {
                 <div className={classes.contactSection}>
                     <Typography variant="h2" className={classes.subtitle_key}>Contact Us</Typography>
                     <Typography className={classes.contactItem}><strong>Email:</strong> support@lms.com</Typography>
-                    <Typography className={classes.contactItem}><strong>Phone:</strong> +1 (123) 456-7890</Typography>
-                    <Typography className={classes.contactItem}><strong>Address:</strong> 123 LMS Street, Edutown, USA</Typography>
+                    <Typography className={classes.contactItem}><strong>Phone:</strong> +91 1234567890</Typography>
                 </div>
                 <Button 
                     component={Link} 

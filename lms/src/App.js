@@ -1,7 +1,8 @@
-// App.js
-import React from 'react';
+// src/App.js
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
+import Navbar from './Pages/Navbar'; // Import the Navbar component
 import Login from './Pages/Login';
 import Register from './Pages/Register';
 import Dash from './Pages/Dash';
@@ -17,8 +18,17 @@ import ComingSoon from './Pages/ComingSoon';
 import Footer from './Pages/Footer'; // Import the Footer component
 
 function App() {
+  const [userData, setUserData] = useState(null);
+
+  useEffect(() => {
+    // Fetch or set user data here
+    // Example:
+    // setUserData({ name: 'John Doe' });
+  }, []);
+
   return (
     <Router>
+      <Navbar userData={userData} /> {/* Navbar is rendered here */}
       <div className='route'>
         <Routes>
           <Route path="/login" element={<Login />} />
