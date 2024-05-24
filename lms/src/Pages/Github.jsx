@@ -13,7 +13,7 @@ const ContributionsChart = ({ username }) => {
     useEffect(() => {
         const fetchContributions = async () => {
             try {
-                const response = await axios.post('http://localhost:5000/api/contributions', userdata); // Pass userdata directly
+                const response = await axios.post('https://lms-gox2.onrender.com/api/contributions', userdata); // Pass userdata directly
                 setContributionsData(response.data);
                 setLoading(false);
             } catch (error) {
