@@ -77,11 +77,10 @@ app.get("/courses", async (req, res) => {
 
 // GitHub Contributions route (accepts payload)
 // Assuming you have the necessary imports and setup
-
 app.post('/api/contributions', async (req, res) => {
-    const { userData } = req.body;
+    const { userdata } = req.body;
     if (!userdata) {
-        return res.status(400).json({ error: 'Username is required' });
+        return res.status(400).json({ error: 'Userdata is required' });
     }
 
     try {
@@ -93,7 +92,9 @@ app.post('/api/contributions', async (req, res) => {
     }
 });
 
-
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });
+
+
+

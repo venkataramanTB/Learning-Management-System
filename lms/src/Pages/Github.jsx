@@ -8,12 +8,12 @@ const ContributionsChart = ({ username }) => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const user = sessionStorage.getItem('loggedInUser');
-    const userdata= `${user.githubProfileId}`;
+    const userdata = user ? JSON.parse(user).githubProfileId : null; // Assuming githubProfileId is the correct field
 
     useEffect(() => {
         const fetchContributions = async () => {
             try {
-                const response = await axios.post('http://localhost:5000/api/contributions', { userdata });
+                const response = await axios.post('http://localhost:5000/api/contributions', userdata); // Pass userdata directly
                 setContributionsData(response.data);
                 setLoading(false);
             } catch (error) {
@@ -22,8 +22,10 @@ const ContributionsChart = ({ username }) => {
             }
         };
 
-        fetchContributions();
-    }, [username]);
+        if (userdata) {
+            fetchContributions();
+        }
+    }, [userdata]); // Update the dependency array to include userdata only
 
     const formatDataForChart = () => {
         const labels = contributionsData.map(contribution => contribution.date);
