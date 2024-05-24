@@ -20,13 +20,14 @@ const useStyles = makeStyles((theme) => ({
     },
     root: {
         textAlign: 'center',
-        marginTop: '50px',
+        marginTop: '30px',
+        marginBottom: '70px',
         padding: '20px',
         maxWidth: '1000px',
         margin: 'auto',
         backgroundColor: 'rgba(255, 255, 255, 0.8)', // Solid white background for main container
         borderRadius: '10px',
-        boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.1)',
+        boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.5)',
     },
     video: {
         position: 'fixed',
@@ -37,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
     },
     title: {
         fontSize: '2.5rem',
-        marginBottom: '20px',
+        marginBottom: '10px',
         color: '#333',
         fontWeight: 'bold',
     },
@@ -285,11 +286,6 @@ const About = () => {
                     Go to Home
                 </Button>
             </Container>
-            <footer className={classes.footer}>
-                <Typography className={classes.footerText}>
-                    &copy; 2024 LMS. All rights reserved. | <Link to="/privacy-policy">Privacy Policy</Link> | <Link to="/terms-of-service">Terms of Service</Link>
-                </Typography>
-            </footer>
         </div>
     );
 };
