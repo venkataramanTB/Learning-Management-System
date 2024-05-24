@@ -1,21 +1,15 @@
 import React, { useState } from "react";
-import { Card, TextField, Button, Typography, makeStyles, MenuItem, Grid } from "@material-ui/core";
+import { Card, TextField, Button, Typography, makeStyles, MenuItem } from "@material-ui/core";
 import { Link, useNavigate } from 'react-router-dom';
 
 const useStyles = makeStyles({
-  body:{
-    height: '100vh',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
   card: {
-    width: '600px',
+    width: '400px',
     padding: '50px',
     margin: 'auto',
     marginTop: '50px',
     boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.5)',
-    backgroundColor: 'rgba(255, 255, 255, 0.8)',
+    background: '#EEEEEE',
   },
   input: {
     marginBottom: '20px',
@@ -45,6 +39,7 @@ function Signup() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [age, setAge] = useState("");
+  const [gitId, setgitId] = useState("");
   const [gender, setGender] = useState("");
   const [error, setError] = useState("");
 
@@ -79,7 +74,8 @@ function Signup() {
       age, 
       firstName, 
       lastName, 
-      gender 
+      gender,
+      gitId, 
     };
     console.log(signupData);
     const profileData = {
@@ -107,102 +103,88 @@ function Signup() {
   };
 
   return (
-    <div className={classes.body}>
-      <Card className={classes.card}>
-        <Typography variant="h4" align="center" className={classes.title}>
+    <Card className={classes.card}>
+      <Typography variant="h4" align="center" className={classes.title}>
+        Sign Up
+      </Typography>
+      <form onSubmit={handleSignUp}>
+        <TextField
+          label="Username"
+          variant="outlined"
+          className={classes.input}
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+        />
+        <TextField
+          label="First Name"
+          variant="outlined"
+          className={classes.input}
+          value={firstName}
+          onChange={(e) => setFirstName(e.target.value)}
+        />
+        <TextField
+          label="Last Name"
+          variant="outlined"
+          className={classes.input}
+          value={lastName}
+          onChange={(e) => setLastName(e.target.value)}
+        />
+        <TextField
+          label="Email"
+          variant="outlined"
+          className={classes.input}
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <TextField
+          label="Password"
+          variant="outlined"
+          type="password"
+          className={classes.input}
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        <TextField
+          label="Age"
+          variant="outlined"
+          type="number"
+          className={classes.input}
+          value={age}
+          onChange={(e) => setAge(e.target.value)}
+        />
+        <TextField
+          select
+          label="Gender"
+          variant="outlined"
+          className={classes.input}
+          value={gender}
+          onChange={(e) => setGender(e.target.value)}
+        >
+          <MenuItem value="male">Male</MenuItem>
+          <MenuItem value="female">Female</MenuItem>
+          <MenuItem value="other">Other</MenuItem>
+        </TextField>
+        <TextField
+          label="GitId"
+          variant="outlined"
+          className={classes.input}
+          value={gitId}
+          onChange={(e) => setAge(e.target.value)}
+        />
+        {error && <Typography className={classes.error}>{error}</Typography>}
+        <Button
+          variant="contained"
+          color="primary"
+          type="submit"
+          className={classes.button}
+        >
           Sign Up
-        </Typography>
-        <form onSubmit={handleSignUp}>
-        <Grid container spacing={2}>
-            <Grid item xs={6}>
-              <TextField
-                label="First Name"
-                variant="outlined"
-                className={classes.input}
-                value={firstName}
-                onChange={(e) => setFirstName(e.target.value)}
-              />
-            </Grid>
-            <Grid item xs={6}>
-              <TextField
-                label="Last Name"
-                variant="outlined"
-                className={classes.input}
-                value={lastName}
-                onChange={(e) => setLastName(e.target.value)}
-              />
-            </Grid>
-          </Grid>
-          <Grid container spacing={2}>
-            <Grid item xs={6}>
-              <TextField
-                label="Username"
-                variant="outlined"
-                className={classes.input}
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-              />
-            </Grid>
-            <Grid item xs={6}>
-              <TextField
-                label="Email"
-                variant="outlined"
-                className={classes.input}
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-            </Grid>
-          </Grid>
-          
-          <TextField
-            label="Password"
-            variant="outlined"
-            type="password"
-            className={classes.input}
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          <Grid container spacing={2}>
-            <Grid item xs={6}>
-              <TextField
-                label="Age"
-                variant="outlined"
-                type="number"
-                className={classes.input}
-                value={age}
-                onChange={(e) => setAge(e.target.value)}
-              />
-            </Grid>
-            <Grid item xs={6}>
-              <TextField
-                select
-                label="Gender"
-                variant="outlined"
-                className={classes.input}
-                value={gender}
-                onChange={(e) => setGender(e.target.value)}
-              >
-                <MenuItem value="male">Male</MenuItem>
-                <MenuItem value="female">Female</MenuItem>
-                <MenuItem value="other">Other</MenuItem>
-              </TextField>
-            </Grid>
-          </Grid>
-          {error && <Typography className={classes.error}>{error}</Typography>}
-          <Button
-            variant="contained"
-            color="primary"
-            type="submit"
-            className={classes.button}
-          >
-            Sign Up
-          </Button>
-        </form>
-        <div>
-          <p>Already have an account? <Link to="/login">Login</Link></p>
-        </div>
-      </Card>
-    </div>
+        </Button>
+      </form>
+      <div>
+        <p>Already have an account? <Link to="/login">Login</Link></p>
+      </div>
+    </Card>
   );
 }
 

@@ -1,0 +1,30 @@
+/* Footer.css */
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    background-color: #333;
+    color: white;
+    padding: 10px 0;
+  }
+  
+  footer nav {
+    margin-bottom: 10px;
+  }
+  
+  footer nav a {
+    color: white;
+    margin: 0 10px;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  footer nav a:hover {
+    color: #ff9800;
+  }
+  
+  footer p {
+    margin: 0;
+  }
+  
