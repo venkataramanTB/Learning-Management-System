@@ -94,6 +94,7 @@ const Courses = () => {
             <nav className="navbar">
                 <div className="navbar-container">
                     <Link to="/" className="nav-logo">
+                    <img src="https://ik.imagekit.io/yash13/EM.jpg?updatedAt=1716522375492" alt="EduMatrix Logo" className="nav-logo-img" />
                         EduMatrix
                     </Link>
                     <ul className="nav-menu">
@@ -102,9 +103,6 @@ const Courses = () => {
                         </li>
                         <li className="nav-item">
                             <Link to="/about" className="nav-links"><i className="fas fa-info-circle"></i> About</Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link to="/profile" className="nav-links"><i className="fas fa-user"></i> Profile</Link>
                         </li>
                         <li className="nav-item">
                             <Link to="/courses" className="nav-links"><i className="fas fa-book"></i> Courses</Link>
