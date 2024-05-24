@@ -160,7 +160,7 @@ const Course = () => {
             <nav className="navbar">
                 <div className="navbar-container">
                     <Link to="/" className="nav-logo">
-                        EduMatrix
+                        LMS
                     </Link>
                     <ul className="nav-menu">
                         <li className="nav-item">

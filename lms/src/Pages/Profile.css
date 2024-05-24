@@ -1,36 +1,34 @@
-
-.root{
+.profile {
     display: flex;
-    justify-Content: center;
-    align-Items: center;
+    text-align: left;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: Arial, sans-serif;
 }
-.header {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-}   
+
 .card {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: #ffffff;
     padding: 20px;
+    border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 800px;
-    border-radius: 20px;
+    margin: 120px auto;
+    max-width: 800px;
 }
 
-.card h1 {
+.profile h1 {
     font-size: 2.5rem;
-    color: #76ABAE;
-    
+    color: #333;
 }
 
-.card p {
+.profile p {
     font-size: 1.2rem;
-    color: black;
-    margin: 5px 0;
+    color: #666;
+    margin: 10px 0;
 }
 
 .cta-button {
@@ -39,7 +37,7 @@
     background-color: #76ABAE;
     border: none;
     padding: 12px 24px;
-    margin-top: 20px;
+    margin-top: 24px;
     text-decoration: none;
     text-align: center;
     cursor: pointer;
@@ -50,4 +48,3 @@
 .cta-button:hover {
     background-color: #5c8d91;
 }
-
