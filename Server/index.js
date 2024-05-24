@@ -79,7 +79,7 @@ app.get("/courses", async (req, res) => {
 // Assuming you have the necessary imports and setup
 app.post('/api/contributions', async (req, res) => {
     const { userdata } = req.body;
-    if (!userdata) {
+    if (userdata) {
         return res.status(400).json({ error: 'Userdata is required' });
     }
 

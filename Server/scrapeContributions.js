@@ -15,3 +15,5 @@ const getGitHubContributions = async (username) => {
         throw error;
     }
 };
+
+module.exports = { getGitHubContributions };
