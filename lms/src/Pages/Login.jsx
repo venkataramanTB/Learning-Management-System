@@ -49,7 +49,10 @@ const useStyles = makeStyles({
         width: '100%',
         marginBottom: '20px',
         color: '#ffffff',
-        background: '#76ABAE'
+        background: '#76ABAE',
+        '&:hover': {
+            backgroundColor: '#609396',
+        },
     },
     loaderContainer: {
         display: 'flex',
@@ -139,7 +142,7 @@ function Login() {
                     </form>
                     <Typography variant="body1" align="center">
                         Don't have an account?{" "}
-                        <Link component={RouterLink} to="/signup">Sign up</Link> 
+                        <Link component={RouterLink} to="/Signup">Sign up</Link> 
                     </Typography>
                     {loading && (
                         <div className={classes.loaderContainer}>
