@@ -2,18 +2,25 @@ body {
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    background: #f5f5f5;
+    background-image: url("C:/project/lms/pg.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* This makes the background image static */
 }
 
 .home {
     text-align: center;
-    padding: 50px 20px;
+    padding: 100px 20px;
+}
+h1 {
+    text-size-adjust: 100px;
 }
 
 .navbar {
     width: 100%;
     height: 80px;
-    background: #ffffff;
+    background: #76ABAE;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     position: fixed;
     top: 0;
@@ -29,7 +36,6 @@ body {
     align-items: center;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 20px;
 }
 
 .nav-logo {
@@ -37,6 +43,11 @@ body {
     font-weight: bold;
     color: #333;
     text-decoration: none;
+}
+.nav-logo-img {
+    margin-Left: 10px;
+    width: 40px;
+    height: auto;
 }
 
 .nav-menu {
@@ -58,15 +69,15 @@ body {
 }
 
 .nav-links:hover {
-    color: #007BFF;
+    text-decoration: underline;
 }
 
 .home-content {
     max-width: 800px;
     margin: 120px auto 0 auto;
     padding: 20px;
-    background: #ffffff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
     border-radius: 10px;
 }
 
@@ -91,6 +102,7 @@ body {
     text-decoration: none;
     border-radius: 5px;
     transition: background 0.3s ease;
+    margin-bottom: 15px;
 }
 
 .cta-button:hover {
@@ -147,12 +159,11 @@ body {
     }
 
     .nav-item {
-        margin-left: 0;
         margin-top: 10px;
     }
 
     .home-content {
-        margin: 80px 5px 0 5px;
+        margin: 80px 5px  5px;
     }
 
     .title {

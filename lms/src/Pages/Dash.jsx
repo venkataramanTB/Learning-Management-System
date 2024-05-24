@@ -118,7 +118,7 @@ const Dash = () => {
             <nav className="navbar">
                 <div className="navbar-container">
                     <Link to="/" className="nav-logo">
-                        LMS
+                        EduMatrix
                     </Link>
                     <ul className="nav-menu">
                         <li className="nav-item">
