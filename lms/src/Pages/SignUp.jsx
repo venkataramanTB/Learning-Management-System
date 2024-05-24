@@ -39,6 +39,7 @@ function Signup() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [age, setAge] = useState("");
+  const [gitId, setgitId] = useState("");
   const [gender, setGender] = useState("");
   const [error, setError] = useState("");
 
@@ -73,7 +74,8 @@ function Signup() {
       age, 
       firstName, 
       lastName, 
-      gender 
+      gender,
+      gitId, 
     };
     console.log(signupData);
     const profileData = {
@@ -162,6 +164,13 @@ function Signup() {
           <MenuItem value="female">Female</MenuItem>
           <MenuItem value="other">Other</MenuItem>
         </TextField>
+        <TextField
+          label="GitId"
+          variant="outlined"
+          className={classes.input}
+          value={gitId}
+          onChange={(e) => setAge(e.target.value)}
+        />
         {error && <Typography className={classes.error}>{error}</Typography>}
         <Button
           variant="contained"

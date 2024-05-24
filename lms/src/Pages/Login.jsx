@@ -77,7 +77,7 @@ function Login() {
         setLoading(true);
         
         try {
-            const response = await fetch('https://lms-gox2.onrender.com/user/auth/login', {
+            const response = await fetch('http://localhost:5000/user/auth/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

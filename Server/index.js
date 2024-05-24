@@ -76,20 +76,23 @@ app.get("/courses", async (req, res) => {
 });
 
 // GitHub Contributions route (accepts payload)
+// Assuming you have the necessary imports and setup
+
 app.post('/api/contributions', async (req, res) => {
-    const { username } = req.body;
-    if (!username) {
+    const { userData } = req.body;
+    if (!userdata) {
         return res.status(400).json({ error: 'Username is required' });
     }
 
     try {
-        const contributions = await getGitHubContributions(username);
+        const contributions = await getGitHubContributions(userdata);
         res.json(contributions);
     } catch (err) {
         console.error('Error fetching GitHub contributions:', err);
         res.status(500).send("Internal Server Error");
     }
 });
+
 
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);

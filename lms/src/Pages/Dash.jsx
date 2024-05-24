@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
 import './Home.css';
@@ -78,6 +78,7 @@ const Dash = () => {
         avatar: 'https://via.placeholder.com/150',
         githubProfileId: `${userData.GithubProfileId}` // Ensure this field exists in the userData
     };
+
     const pieData = {
         labels: ['HTML', 'CSS', 'JavaScript', 'React', 'Node.js'],
         datasets: [
@@ -175,7 +176,7 @@ const Dash = () => {
                         </Card>
                     </Grid>
                     <Grid item xs={12}>
-                        <ContributionsChart username={user.githubProfileId} />
+                        <ContributionsChart username={userData.GithubProfileId} />
                     </Grid>
                 </Grid>
             </Container>
