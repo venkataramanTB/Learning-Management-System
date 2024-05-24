@@ -20,8 +20,8 @@ const useStyles = makeStyles((theme) => ({
     },
     root: {
         textAlign: 'center',
-        marginTop: '30px',
-        marginBottom: '70px',
+        marginTop: '50px',
+        marginBottom: '100px',
         padding: '20px',
         maxWidth: '1000px',
         margin: 'auto',
@@ -42,23 +42,27 @@ const useStyles = makeStyles((theme) => ({
         color: '#333',
         fontWeight: 'bold',
     },
-    subtitle: {
-        fontSize: '1.5rem',
-        margin: '20px 0',
-        color: '#76ABAE',
-        textDecoration: 'underline',
-    },
     team:{
         fontSize: '2rem',
         margin: '20px 0',
         color: 'black',
         textDecoration: 'underline',
+        transition: 'transform 0.15s ease-in-out',
+        '&:hover': {
+            transform: 'scale(1.1)',
+        }
+        
     },
-    subtitle_key: {
+    subtitle: {
         fontSize: '1.5rem',
-        margin: '20px 0',
+        margin: '10px 0',
         color: '#76ABAE',
-        textDecoration: 'underline',
+        transition: 'transform 0.15s ease-in-out',
+        '&:hover': {
+            textDecoration: 'underline',
+            transform: 'scale(1.1)',
+        },
+        
     },
     text: {
         fontSize: '1.2rem',
@@ -86,7 +90,7 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: '#76ABAE',
         color: 'white',
         '&:hover': {
-            backgroundColor: '#5c8d91',
+            backgroundColor: '#609396',
         },
     },
     nav: {
@@ -150,6 +154,13 @@ const useStyles = makeStyles((theme) => ({
         borderRadius: '10px',
         boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.1)',
     },
+    contactDetails: {
+        display: 'flex',
+        justifyContent: 'center', // Center the content
+        alignItems: 'center', // Vertically align the items
+        gap: '20px', // Add space between items
+    },
+    
     contactItem: {
         margin: '10px 0',
         color: '#333',
@@ -260,7 +271,7 @@ const About = () => {
                     ))}
                 </Grid>
                 <div className={classes.featuresSection}>
-                    <Typography variant="h2" className={classes.subtitle_key}>
+                    <Typography variant="h2" className={classes.subtitle}>
                         Key Features
                     </Typography>
                     <div className='m'>
@@ -273,9 +284,11 @@ const About = () => {
                 </div>
                 <br></br>
                 <div className={classes.contactSection}>
-                    <Typography variant="h2" className={classes.subtitle_key}>Contact Us</Typography>
-                    <Typography className={classes.contactItem}><strong>Email:</strong> support@lms.com</Typography>
-                    <Typography className={classes.contactItem}><strong>Phone:</strong> +91 1234567890</Typography>
+                    <Typography variant="h2" className={classes.subtitle}>Contact Us</Typography>
+                    <div className={classes.contactDetails}>
+                        <Typography className={classes.contactItem}><strong>Email:</strong> support@lms.com</Typography>
+                        <Typography className={classes.contactItem}><strong>Phone:</strong> +91 1234567890</Typography>
+                    </div>
                 </div>
                 <Button 
                     component={Link} 
