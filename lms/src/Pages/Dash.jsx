@@ -2,6 +2,7 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
 import './Home.css';
+import ContributionsChart from './Github';
 import {
     Container,
     Grid,
@@ -75,6 +76,7 @@ const Dash = () => {
         name: `${userData.FirstName}`,
         email: `${userData.Email}`,
         avatar: 'https://via.placeholder.com/150',
+        githubProfileId: `${userData.GithubProfileId}` // Ensure this field exists in the userData
     };
     const pieData = {
         labels: ['HTML', 'CSS', 'JavaScript', 'React', 'Node.js'],
@@ -173,18 +175,7 @@ const Dash = () => {
                         </Card>
                     </Grid>
                     <Grid item xs={12}>
-                        <Card className={classes.card}>
-                            <CardContent>
-                                <Typography variant="h6" gutterBottom>
-                                    Performance Over Months
-                                </Typography>
-                                <Box className={classes.chartContainer}>
-                                    <div className={classes.barChart}>
-                                        <Bar data={barData} options={barOptions} />
-                                    </div>
-                                </Box>
-                            </CardContent>
-                        </Card>
+                        <ContributionsChart username={user.githubProfileId} />
                     </Grid>
                 </Grid>
             </Container>
