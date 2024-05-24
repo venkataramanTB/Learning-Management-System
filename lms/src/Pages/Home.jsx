@@ -55,7 +55,9 @@ const Home = () => {
                         </div>
                     </nav>
                     <div className="home-content">
-                        <h1 className="title">Welcome to the Learning Management System</h1>
+                        <h1 className="title">Welcome to EduMatrix</h1>
+                        <h2>Learning Managment System</h2>
+                        <br></br>
                         <p className="description">Our Learning Management System provides a comprehensive, customizable, scalable, and easy to use platform to educators and learners. We are committed to making learning accessible and effective for all. Explore courses, create your own learning paths, and achieve your educational goals here.
                         Happy Learning!</p>
                         {userData ? (
