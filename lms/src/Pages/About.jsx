@@ -16,6 +16,7 @@ const useStyles = makeStyles((theme) => ({
     About: {
         position: 'relative',
         overflow: 'hidden',
+        backgroundColor: '#f0f0f0', // Light background color for the entire page
         paddingTop: '80px', // Added padding to account for the fixed navbar
     },
     root: {
@@ -24,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
         padding: '20px',
         maxWidth: '1000px',
         margin: 'auto',
-        backgroundColor: 'rgba(255, 255, 255, 0.8)', // Solid white background for main container
+        backgroundColor: '#ffffff', // Solid white background for main container
         borderRadius: '10px',
         boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.1)',
     },
@@ -47,12 +48,6 @@ const useStyles = makeStyles((theme) => ({
         color: '#76ABAE',
         textDecoration: 'underline',
     },
-    team:{
-        fontSize: '2rem',
-        margin: '20px 0',
-        color: 'black',
-        textDecoration: 'underline',
-    },
     subtitle_key: {
         fontSize: '1.5rem',
         margin: '20px 0',
@@ -65,12 +60,6 @@ const useStyles = makeStyles((theme) => ({
         margin: '10px 0',
     },
     card: {
-        margin: '20px auto',
-        padding: '20px',
-        backgroundColor: '#ffffff', // Solid white background for cards
-        boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.1)',
-    },
-    teammates:{
         margin: '20px auto',
         padding: '20px',
         backgroundColor: '#ffffff', // Solid white background for cards
@@ -91,7 +80,7 @@ const useStyles = makeStyles((theme) => ({
     nav: {
         width: '100%',
         height: '80px',
-        backgroundColor: '#76ABAE',
+        backgroundColor: '#ffffff',
         boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
         position: 'fixed',
         top: '0',
@@ -102,7 +91,6 @@ const useStyles = makeStyles((theme) => ({
         justifyContent: 'space-between',
         alignItems: 'center',
         padding: '0 20px',
-        
     },
     logo: {
         fontSize: '32px',
@@ -110,17 +98,14 @@ const useStyles = makeStyles((theme) => ({
         color: '#333',
         textDecoration: 'none',
     },
-
     menu: {
         listStyle: 'none',
         display: 'flex',
         margin: '0',
         padding: '0',
-        
     },
     menuItem: {
         marginLeft: '20px',
-        
     },
     menuLink: {
         color: '#333',
@@ -128,7 +113,7 @@ const useStyles = makeStyles((theme) => ({
         fontSize: '16px',
         transition: 'color 0.3s ease',
         '&:hover': {
-            textDecoration: 'underline',
+            color: '#007BFF',
         },
     },
     footer: {
@@ -137,7 +122,6 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: '#f5f5f5',
         textAlign: 'center',
     },
-    
     footerText: {
         fontSize: '1rem',
         color: '#666',
@@ -164,9 +148,6 @@ const useStyles = makeStyles((theme) => ({
         margin: '10px 0',
         color: '#333',
     },
-    m: {
-        color: 'white',
-    },
 }));
 
 const About = () => {
@@ -180,8 +161,7 @@ const About = () => {
             </video>
             <nav className={classes.nav}>
                 <Link to="/" className={classes.logo}>
-                <img src="https://ik.imagekit.io/yash13/EM.jpg?updatedAt=1716522375492" alt="EduMatrix Logo" style={{ marginLeft: '10px', width: '40px', height: 'auto' }} className="nav-logo-img" />
-                    EduMatrix
+                    LMS
                 </Link>
                 <ul className={classes.menu}>
                     <li className={classes.menuItem}>
@@ -189,6 +169,9 @@ const About = () => {
                     </li>
                     <li className={classes.menuItem}>
                         <Link to="/about" className={classes.menuLink}><i className="fas fa-info-circle"></i> About</Link>
+                    </li>
+                    <li className={classes.menuItem}>
+                        <Link to="/profile" className={classes.menuLink}><i className="fas fa-user"></i> Profile</Link>
                     </li>
                     <li className={classes.menuItem}>
                         <Link to="/courses" className={classes.menuLink}><i className="fas fa-book"></i> Courses</Link>
@@ -199,8 +182,6 @@ const About = () => {
                 </ul>
             </nav>
             <Container className={classes.root}>
-                <br></br>
-                <h1 className="title">About Us</h1>
                 <div>
                     <Grid container spacing={3}>
                         <Grid item xs={12} sm={6}>
@@ -229,7 +210,7 @@ const About = () => {
                         </Grid>
                     </Grid>
                 </div>
-                <Typography variant="h2" className={classes.team}>Meet the Team</Typography>
+                <Typography variant="h2" className={classes.subtitle}>Meet the Team</Typography>
                 <Grid container spacing={4} justifyContent="center">
                     {[
                         { id: 1, name: 'Venky', role: 'CEO', image: 'https://via.placeholder.com/150?text=Venky', description: 'Venky is the visionary behind LMS, with a passion for education and technology.' },
@@ -237,7 +218,7 @@ const About = () => {
                         { id: 3, name: 'Yash', role: 'COO', image: 'https://via.placeholder.com/150?text=Yash', description: 'Yash oversees operations, making sure everything runs smoothly and efficiently.' },
                     ].map((member) => (
                         <Grid item xs={12} sm={4} md={4} key={member.id}>
-                            <Card className={classes.teammates}>
+                            <Card className={classes.card}>
                                 <CardMedia
                                     className={classes.media}
                                     image={member.image}
@@ -262,15 +243,12 @@ const About = () => {
                     <Typography variant="h2" className={classes.subtitle_key}>
                         Key Features
                     </Typography>
-                    <div className='m'>
-                        <Typography className={classes.featureItem}><strong>Interactive Courses:</strong> Our courses are designed to be engaging and interactive, with a mix of videos, quizzes, and assignments.</Typography>
-                        <Typography className={classes.featureItem}><strong>Expert Instructors:</strong> Learn from industry experts who bring real-world experience to the virtual classroom.</Typography>
-                        <Typography className={classes.featureItem}><strong>Flexible Learning:</strong> Access courses anytime, anywhere, and learn at your own pace.</Typography>
-                        <Typography className={classes.featureItem}><strong>Community Support:</strong> Join a vibrant community of learners and get support from peers and instructors.</Typography>
-                        <Typography className={classes.featureItem}><strong>Certifications:</strong> Earn certificates of completion to showcase your new skills and knowledge.</Typography>
-                    </div>
+                    <Typography className={classes.featureItem}><strong>Interactive Courses:</strong> Our courses are designed to be engaging and interactive, with a mix of videos, quizzes, and assignments.</Typography>
+                    <Typography className={classes.featureItem}><strong>Expert Instructors:</strong> Learn from industry experts who bring real-world experience to the virtual classroom.</Typography>
+                    <Typography className={classes.featureItem}><strong>Flexible Learning:</strong> Access courses anytime, anywhere, and learn at your own pace.</Typography>
+                    <Typography className={classes.featureItem}><strong>Community Support:</strong> Join a vibrant community of learners and get support from peers and instructors.</Typography>
+                    <Typography className={classes.featureItem}><strong>Certifications:</strong> Earn certificates of completion to showcase your new skills and knowledge.</Typography>
                 </div>
-                <br></br>
                 <div className={classes.contactSection}>
                     <Typography variant="h2" className={classes.subtitle_key}>Contact Us</Typography>
                     <Typography className={classes.contactItem}><strong>Email:</strong> support@lms.com</Typography>

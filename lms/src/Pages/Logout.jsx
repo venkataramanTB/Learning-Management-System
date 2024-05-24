@@ -8,16 +8,10 @@ const Logout = () => {
   };
 
   return (
-    <div className='root'>
-      <div className="logout">
-        <br></br>
-        <h1>Logout</h1>
-        <br></br>
-        <p>Are you sure you want to logout?</p>
-        <br></br>
-        <button onClick={handleLogout}>Yes</button>
-        <br></br>
-      </div>
+    <div className="logout">
+      <h1>Logout</h1>
+      <p>Are you sure you want to logout?</p>
+      <button onClick={handleLogout}>Yes</button>
     </div>
   );
 };
