@@ -30,7 +30,8 @@ const useStyles = makeStyles({
         alignItems: 'center',
     },
     card: {
-        width: '500px',
+        width: '600px',
+        hight: '600px',
         padding: '50px',
         display: 'flex',
         flexDirection: 'column',
@@ -109,6 +110,7 @@ function Login() {
     }  
     
     return (
+        
         <ThemeProvider theme={theme}>
             <CssBaseline />
             <div className={classes.body}>

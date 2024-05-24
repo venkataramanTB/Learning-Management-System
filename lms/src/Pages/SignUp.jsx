@@ -10,7 +10,7 @@ const useStyles = makeStyles({
     alignItems: 'center',
   },
   card: {
-    width: '500px',
+    width: '600px',
     padding: '50px',
     margin: 'auto',
     marginTop: '50px',

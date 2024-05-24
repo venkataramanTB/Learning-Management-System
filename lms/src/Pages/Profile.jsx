@@ -7,8 +7,9 @@ const Profile = () => {
     return (
         <div className='root'>
             <div className="card">
-                <div className="profile">
+                
                     <h1>Profile</h1>
+                    <br></br>
                     <hr></hr>
                     {user ? (
                         <React.Fragment>
@@ -26,7 +27,7 @@ const Profile = () => {
                     )}
                     <Link to="/dash" className="cta-button">Go to Dashboard</Link>
                     <Link to="/logout" className="cta-button">Logout</Link>
-                </div>
+                
             </div>
         </div>
     );
